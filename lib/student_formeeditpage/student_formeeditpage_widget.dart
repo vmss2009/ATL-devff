@@ -564,7 +564,7 @@ class _StudentFormeeditpageWidgetState
                           context: context,
                           builder: (alertDialogContext) {
                             return AlertDialog(
-                              title: Text('School Added Successfully'),
+                              title: Text('School Updated Successfully'),
                               actions: [
                                 TextButton(
                                   onPressed: () =>

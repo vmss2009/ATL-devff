@@ -31,6 +31,8 @@ abstract class YoungMentorDataRecord
 
   String? get youngMentorCompetitionMapped;
 
+  String? get youngMentorAspiration;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -46,7 +48,8 @@ abstract class YoungMentorDataRecord
         ..youngMentorEmail = ''
         ..youngMentorWhatsappContact = ''
         ..youngMentorCurrentExperiment = ''
-        ..youngMentorCompetitionMapped = '';
+        ..youngMentorCompetitionMapped = ''
+        ..youngMentorAspiration = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('youngMentorData');
@@ -81,6 +84,7 @@ Map<String, dynamic> createYoungMentorDataRecordData({
   String? youngMentorWhatsappContact,
   String? youngMentorCurrentExperiment,
   String? youngMentorCompetitionMapped,
+  String? youngMentorAspiration,
 }) {
   final firestoreData = serializers.toFirestore(
     YoungMentorDataRecord.serializer,
@@ -95,7 +99,8 @@ Map<String, dynamic> createYoungMentorDataRecordData({
         ..youngMentorEmail = youngMentorEmail
         ..youngMentorWhatsappContact = youngMentorWhatsappContact
         ..youngMentorCurrentExperiment = youngMentorCurrentExperiment
-        ..youngMentorCompetitionMapped = youngMentorCompetitionMapped,
+        ..youngMentorCompetitionMapped = youngMentorCompetitionMapped
+        ..youngMentorAspiration = youngMentorAspiration,
     ),
   );
 

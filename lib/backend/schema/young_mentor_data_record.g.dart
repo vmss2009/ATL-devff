@@ -95,6 +95,13 @@ class _$YoungMentorDataRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.youngMentorAspiration;
+    if (value != null) {
+      result
+        ..add('youngMentorAspiration')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -158,6 +165,10 @@ class _$YoungMentorDataRecordSerializer
           result.youngMentorCompetitionMapped = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'youngMentorAspiration':
+          result.youngMentorAspiration = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -193,6 +204,8 @@ class _$YoungMentorDataRecord extends YoungMentorDataRecord {
   @override
   final String? youngMentorCompetitionMapped;
   @override
+  final String? youngMentorAspiration;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$YoungMentorDataRecord(
@@ -210,6 +223,7 @@ class _$YoungMentorDataRecord extends YoungMentorDataRecord {
       this.youngMentorWhatsappContact,
       this.youngMentorCurrentExperiment,
       this.youngMentorCompetitionMapped,
+      this.youngMentorAspiration,
       this.ffRef})
       : super._();
 
@@ -236,6 +250,7 @@ class _$YoungMentorDataRecord extends YoungMentorDataRecord {
         youngMentorWhatsappContact == other.youngMentorWhatsappContact &&
         youngMentorCurrentExperiment == other.youngMentorCurrentExperiment &&
         youngMentorCompetitionMapped == other.youngMentorCompetitionMapped &&
+        youngMentorAspiration == other.youngMentorAspiration &&
         ffRef == other.ffRef;
   }
 
@@ -250,16 +265,22 @@ class _$YoungMentorDataRecord extends YoungMentorDataRecord {
                             $jc(
                                 $jc(
                                     $jc(
-                                        $jc($jc(0, youngMentorCollege.hashCode),
-                                            youngMentorFirstName.hashCode),
-                                        youngMentorLastName.hashCode),
-                                    youngMentorDepartment.hashCode),
-                                youngMentorStudy.hashCode),
-                            youngMentorYear.hashCode),
-                        youngMentorEmail.hashCode),
-                    youngMentorWhatsappContact.hashCode),
-                youngMentorCurrentExperiment.hashCode),
-            youngMentorCompetitionMapped.hashCode),
+                                        $jc(
+                                            $jc(
+                                                $jc(
+                                                    0,
+                                                    youngMentorCollege
+                                                        .hashCode),
+                                                youngMentorFirstName.hashCode),
+                                            youngMentorLastName.hashCode),
+                                        youngMentorDepartment.hashCode),
+                                    youngMentorStudy.hashCode),
+                                youngMentorYear.hashCode),
+                            youngMentorEmail.hashCode),
+                        youngMentorWhatsappContact.hashCode),
+                    youngMentorCurrentExperiment.hashCode),
+                youngMentorCompetitionMapped.hashCode),
+            youngMentorAspiration.hashCode),
         ffRef.hashCode));
   }
 
@@ -276,6 +297,7 @@ class _$YoungMentorDataRecord extends YoungMentorDataRecord {
           ..add('youngMentorWhatsappContact', youngMentorWhatsappContact)
           ..add('youngMentorCurrentExperiment', youngMentorCurrentExperiment)
           ..add('youngMentorCompetitionMapped', youngMentorCompetitionMapped)
+          ..add('youngMentorAspiration', youngMentorAspiration)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -337,6 +359,11 @@ class YoungMentorDataRecordBuilder
   set youngMentorCompetitionMapped(String? youngMentorCompetitionMapped) =>
       _$this._youngMentorCompetitionMapped = youngMentorCompetitionMapped;
 
+  String? _youngMentorAspiration;
+  String? get youngMentorAspiration => _$this._youngMentorAspiration;
+  set youngMentorAspiration(String? youngMentorAspiration) =>
+      _$this._youngMentorAspiration = youngMentorAspiration;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -358,6 +385,7 @@ class YoungMentorDataRecordBuilder
       _youngMentorWhatsappContact = $v.youngMentorWhatsappContact;
       _youngMentorCurrentExperiment = $v.youngMentorCurrentExperiment;
       _youngMentorCompetitionMapped = $v.youngMentorCompetitionMapped;
+      _youngMentorAspiration = $v.youngMentorAspiration;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -391,6 +419,7 @@ class YoungMentorDataRecordBuilder
             youngMentorWhatsappContact: youngMentorWhatsappContact,
             youngMentorCurrentExperiment: youngMentorCurrentExperiment,
             youngMentorCompetitionMapped: youngMentorCompetitionMapped,
+            youngMentorAspiration: youngMentorAspiration,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

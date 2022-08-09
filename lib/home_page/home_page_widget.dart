@@ -211,6 +211,72 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ],
                 ),
               ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(-0.95, 0),
+                      child: Text(
+                        'Young Mentor Data',
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyText1Family,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TeamFormPageWidget(),
+                          ),
+                        );
+                      },
+                      child: ListTile(
+                        title: Text(
+                          'Young Mentor Form',
+                          style: FlutterFlowTheme.of(context).title2,
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Color(0xFF303030),
+                          size: 20,
+                        ),
+                        tileColor: Color(0xFFF5F5F5),
+                        dense: false,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TeamReportPageWidget(),
+                          ),
+                        );
+                      },
+                      child: ListTile(
+                        title: Text(
+                          'Young Mentor Report',
+                          style: FlutterFlowTheme.of(context).title2,
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Color(0xFF303030),
+                          size: 20,
+                        ),
+                        tileColor: Color(0xFFF5F5F5),
+                        dense: false,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Expanded(
                 child: Align(
                   alignment: AlignmentDirectional(0, -0.3),
