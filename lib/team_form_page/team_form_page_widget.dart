@@ -262,7 +262,7 @@ class _TeamFormPageWidgetState extends State<TeamFormPageWidget> {
                                                               .bodyText1Family,
                                                       color: Colors.black,
                                                     ),
-                                            hintText: 'Please select...',
+                                            hintText: 'Please select.....',
                                             fillColor: Colors.white,
                                             elevation: 2,
                                             borderColor: Colors.transparent,
