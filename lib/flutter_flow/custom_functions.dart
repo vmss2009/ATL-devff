@@ -15,5 +15,5 @@ String convertbooltostring(bool? text) {
 }
 
 String returnTeamMembersInStringFormat(List<String> teamMembers) {
-  return teamMembers.join(", ");
+  return teamMembers.join(",");
 }

@@ -571,7 +571,7 @@ class _YoungMentorFormWidgetState extends State<YoungMentorFormWidget> {
                         final youngMentorDataCreateData =
                             createYoungMentorDataRecordData(
                           youngMentorCollege: dropDownValue1,
-                          youngMentorFirstName: textController2!.text,
+                          youngMentorFirstName: textController1!.text,
                           youngMentorLastName: textController2!.text,
                           youngMentorDepartment: dropDownValue2,
                           youngMentorStudy: dropDownValue3,

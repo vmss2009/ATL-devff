@@ -152,6 +152,9 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
                                                 teamLeader:
                                                     listViewTeamDataRecord
                                                         .teamLeader,
+                                                teamMembers: functions.returnTeamMembersInStringFormat(
+                                                    listViewTeamDataRecord.teamMember!
+                                                        .toList()),
                                                 currentExperiment:
                                                     listViewTeamDataRecord
                                                         .experiment,

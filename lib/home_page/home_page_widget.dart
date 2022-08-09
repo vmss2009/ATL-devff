@@ -1,3 +1,5 @@
+import 'package:a_t_l_dev/index.dart';
+
 import '../auth/auth_util.dart';
 import '../edit_profile/edit_profile_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -233,7 +235,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => TeamFormPageWidget(),
+                            builder: (context) => YoungMentorFormWidget(),
                           ),
                         );
                       },
@@ -256,7 +258,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => TeamReportPageWidget(),
+                            builder: (context) => YoungMentorReportWidget(),
                           ),
                         );
                       },
