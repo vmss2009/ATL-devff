@@ -15,7 +15,7 @@ class EditTaskWidget extends StatefulWidget {
     this.documentRefrence,
   }) : super(key: key);
 
-  final ActivitiesandStatusRecord? documentRefrence;
+  final ActivitiesAndStatusRecord? documentRefrence;
 
   @override
   _EditTaskWidgetState createState() => _EditTaskWidgetState();
@@ -348,14 +348,14 @@ class _EditTaskWidgetState extends State<EditTaskWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
-                                  final activitiesandStatusUpdateData =
-                                      createActivitiesandStatusRecordData(
+                                  final activitiesAndStatusUpdateData =
+                                      createActivitiesAndStatusRecordData(
                                     toDoDate: datePicked,
                                     toDoName: textController1!.text,
                                     toDoDescription: textController2!.text,
                                   );
                                   await widget.documentRefrence!.reference
-                                      .update(activitiesandStatusUpdateData);
+                                      .update(activitiesAndStatusUpdateData);
                                   Navigator.pop(context);
                                 },
                                 text: 'Update Task',

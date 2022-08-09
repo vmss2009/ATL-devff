@@ -317,17 +317,17 @@ class _CreateNewTaskWidgetState extends State<CreateNewTaskWidget> {
                                       return;
                                     }
 
-                                    final activitiesandStatusCreateData =
-                                        createActivitiesandStatusRecordData(
+                                    final activitiesAndStatusCreateData =
+                                        createActivitiesAndStatusRecordData(
                                       toDoDate: datePicked,
                                       toDoName: textController1!.text,
                                       toDoDescription: textController2!.text,
                                       toDoState: false,
                                       user: currentUserReference,
                                     );
-                                    await ActivitiesandStatusRecord.collection
+                                    await ActivitiesAndStatusRecord.collection
                                         .doc()
-                                        .set(activitiesandStatusCreateData);
+                                        .set(activitiesAndStatusCreateData);
                                     Navigator.pop(context);
                                   },
                                   text: 'Create Task',

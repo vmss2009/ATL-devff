@@ -4,12 +4,12 @@ import 'index.dart';
 import 'serializers.dart';
 import 'package:built_value/built_value.dart';
 
-part 'atlusers_record.g.dart';
+part 'atl_users_record.g.dart';
 
-abstract class AtlusersRecord
-    implements Built<AtlusersRecord, AtlusersRecordBuilder> {
-  static Serializer<AtlusersRecord> get serializer =>
-      _$atlusersRecordSerializer;
+abstract class AtlUsersRecord
+    implements Built<AtlUsersRecord, AtlUsersRecordBuilder> {
+  static Serializer<AtlUsersRecord> get serializer =>
+      _$atlUsersRecordSerializer;
 
   String? get email;
 
@@ -31,7 +31,7 @@ abstract class AtlusersRecord
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
-  static void _initializeBuilder(AtlusersRecordBuilder builder) => builder
+  static void _initializeBuilder(AtlUsersRecordBuilder builder) => builder
     ..email = ''
     ..displayName = ''
     ..photoUrl = ''
@@ -39,27 +39,27 @@ abstract class AtlusersRecord
     ..phoneNumber = '';
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('atlusers');
+      FirebaseFirestore.instance.collection('atlUsers');
 
-  static Stream<AtlusersRecord> getDocument(DocumentReference ref) => ref
+  static Stream<AtlUsersRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
       .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  static Future<AtlusersRecord> getDocumentOnce(DocumentReference ref) => ref
+  static Future<AtlUsersRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
       .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  AtlusersRecord._();
-  factory AtlusersRecord([void Function(AtlusersRecordBuilder) updates]) =
-      _$AtlusersRecord;
+  AtlUsersRecord._();
+  factory AtlUsersRecord([void Function(AtlUsersRecordBuilder) updates]) =
+      _$AtlUsersRecord;
 
-  static AtlusersRecord getDocumentFromData(
+  static AtlUsersRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
           {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
-Map<String, dynamic> createAtlusersRecordData({
+Map<String, dynamic> createAtlUsersRecordData({
   String? email,
   String? displayName,
   String? photoUrl,
@@ -68,8 +68,8 @@ Map<String, dynamic> createAtlusersRecordData({
   String? phoneNumber,
 }) {
   final firestoreData = serializers.toFirestore(
-    AtlusersRecord.serializer,
-    AtlusersRecord(
+    AtlUsersRecord.serializer,
+    AtlUsersRecord(
       (a) => a
         ..email = email
         ..displayName = displayName

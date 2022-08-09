@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'activitiesand_status_record.dart';
+part of 'activities_and_status_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<ActivitiesandStatusRecord> _$activitiesandStatusRecordSerializer =
-    new _$ActivitiesandStatusRecordSerializer();
+Serializer<ActivitiesAndStatusRecord> _$activitiesAndStatusRecordSerializer =
+    new _$ActivitiesAndStatusRecordSerializer();
 
-class _$ActivitiesandStatusRecordSerializer
-    implements StructuredSerializer<ActivitiesandStatusRecord> {
+class _$ActivitiesAndStatusRecordSerializer
+    implements StructuredSerializer<ActivitiesAndStatusRecord> {
   @override
   final Iterable<Type> types = const [
-    ActivitiesandStatusRecord,
-    _$ActivitiesandStatusRecord
+    ActivitiesAndStatusRecord,
+    _$ActivitiesAndStatusRecord
   ];
   @override
-  final String wireName = 'ActivitiesandStatusRecord';
+  final String wireName = 'ActivitiesAndStatusRecord';
 
   @override
   Iterable<Object?> serialize(
-      Serializers serializers, ActivitiesandStatusRecord object,
+      Serializers serializers, ActivitiesAndStatusRecord object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
@@ -60,14 +60,6 @@ class _$ActivitiesandStatusRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
-    value = object.user;
-    if (value != null) {
-      result
-        ..add('user')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                DocumentReference, const [const FullType.nullable(Object)])));
-    }
     value = object.role;
     if (value != null) {
       result
@@ -75,6 +67,14 @@ class _$ActivitiesandStatusRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
+    }
+    value = object.user;
+    if (value != null) {
+      result
+        ..add('user')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.ffRef;
     if (value != null) {
@@ -88,10 +88,10 @@ class _$ActivitiesandStatusRecordSerializer
   }
 
   @override
-  ActivitiesandStatusRecord deserialize(
+  ActivitiesAndStatusRecord deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new ActivitiesandStatusRecordBuilder();
+    final result = new ActivitiesAndStatusRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -119,17 +119,17 @@ class _$ActivitiesandStatusRecordSerializer
           result.completedDate = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime?;
           break;
-        case 'user':
-          result.user = serializers.deserialize(value,
-              specifiedType: const FullType(DocumentReference, const [
-                const FullType.nullable(Object)
-              ])) as DocumentReference<Object?>?;
-          break;
         case 'role':
           result.role.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
+          break;
+        case 'user':
+          result.user = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -144,7 +144,7 @@ class _$ActivitiesandStatusRecordSerializer
   }
 }
 
-class _$ActivitiesandStatusRecord extends ActivitiesandStatusRecord {
+class _$ActivitiesAndStatusRecord extends ActivitiesAndStatusRecord {
   @override
   final DateTime? toDoDate;
   @override
@@ -156,47 +156,47 @@ class _$ActivitiesandStatusRecord extends ActivitiesandStatusRecord {
   @override
   final DateTime? completedDate;
   @override
-  final DocumentReference<Object?>? user;
-  @override
   final BuiltList<String>? role;
+  @override
+  final DocumentReference<Object?>? user;
   @override
   final DocumentReference<Object?>? ffRef;
 
-  factory _$ActivitiesandStatusRecord(
-          [void Function(ActivitiesandStatusRecordBuilder)? updates]) =>
-      (new ActivitiesandStatusRecordBuilder()..update(updates))._build();
+  factory _$ActivitiesAndStatusRecord(
+          [void Function(ActivitiesAndStatusRecordBuilder)? updates]) =>
+      (new ActivitiesAndStatusRecordBuilder()..update(updates))._build();
 
-  _$ActivitiesandStatusRecord._(
+  _$ActivitiesAndStatusRecord._(
       {this.toDoDate,
       this.toDoName,
       this.toDoDescription,
       this.toDoState,
       this.completedDate,
-      this.user,
       this.role,
+      this.user,
       this.ffRef})
       : super._();
 
   @override
-  ActivitiesandStatusRecord rebuild(
-          void Function(ActivitiesandStatusRecordBuilder) updates) =>
+  ActivitiesAndStatusRecord rebuild(
+          void Function(ActivitiesAndStatusRecordBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ActivitiesandStatusRecordBuilder toBuilder() =>
-      new ActivitiesandStatusRecordBuilder()..replace(this);
+  ActivitiesAndStatusRecordBuilder toBuilder() =>
+      new ActivitiesAndStatusRecordBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ActivitiesandStatusRecord &&
+    return other is ActivitiesAndStatusRecord &&
         toDoDate == other.toDoDate &&
         toDoName == other.toDoName &&
         toDoDescription == other.toDoDescription &&
         toDoState == other.toDoState &&
         completedDate == other.completedDate &&
-        user == other.user &&
         role == other.role &&
+        user == other.user &&
         ffRef == other.ffRef;
   }
 
@@ -211,30 +211,30 @@ class _$ActivitiesandStatusRecord extends ActivitiesandStatusRecord {
                             toDoDescription.hashCode),
                         toDoState.hashCode),
                     completedDate.hashCode),
-                user.hashCode),
-            role.hashCode),
+                role.hashCode),
+            user.hashCode),
         ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'ActivitiesandStatusRecord')
+    return (newBuiltValueToStringHelper(r'ActivitiesAndStatusRecord')
           ..add('toDoDate', toDoDate)
           ..add('toDoName', toDoName)
           ..add('toDoDescription', toDoDescription)
           ..add('toDoState', toDoState)
           ..add('completedDate', completedDate)
-          ..add('user', user)
           ..add('role', role)
+          ..add('user', user)
           ..add('ffRef', ffRef))
         .toString();
   }
 }
 
-class ActivitiesandStatusRecordBuilder
+class ActivitiesAndStatusRecordBuilder
     implements
-        Builder<ActivitiesandStatusRecord, ActivitiesandStatusRecordBuilder> {
-  _$ActivitiesandStatusRecord? _$v;
+        Builder<ActivitiesAndStatusRecord, ActivitiesAndStatusRecordBuilder> {
+  _$ActivitiesAndStatusRecord? _$v;
 
   DateTime? _toDoDate;
   DateTime? get toDoDate => _$this._toDoDate;
@@ -258,23 +258,23 @@ class ActivitiesandStatusRecordBuilder
   set completedDate(DateTime? completedDate) =>
       _$this._completedDate = completedDate;
 
-  DocumentReference<Object?>? _user;
-  DocumentReference<Object?>? get user => _$this._user;
-  set user(DocumentReference<Object?>? user) => _$this._user = user;
-
   ListBuilder<String>? _role;
   ListBuilder<String> get role => _$this._role ??= new ListBuilder<String>();
   set role(ListBuilder<String>? role) => _$this._role = role;
+
+  DocumentReference<Object?>? _user;
+  DocumentReference<Object?>? get user => _$this._user;
+  set user(DocumentReference<Object?>? user) => _$this._user = user;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  ActivitiesandStatusRecordBuilder() {
-    ActivitiesandStatusRecord._initializeBuilder(this);
+  ActivitiesAndStatusRecordBuilder() {
+    ActivitiesAndStatusRecord._initializeBuilder(this);
   }
 
-  ActivitiesandStatusRecordBuilder get _$this {
+  ActivitiesAndStatusRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _toDoDate = $v.toDoDate;
@@ -282,8 +282,8 @@ class ActivitiesandStatusRecordBuilder
       _toDoDescription = $v.toDoDescription;
       _toDoState = $v.toDoState;
       _completedDate = $v.completedDate;
-      _user = $v.user;
       _role = $v.role?.toBuilder();
+      _user = $v.user;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -291,31 +291,31 @@ class ActivitiesandStatusRecordBuilder
   }
 
   @override
-  void replace(ActivitiesandStatusRecord other) {
+  void replace(ActivitiesAndStatusRecord other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$ActivitiesandStatusRecord;
+    _$v = other as _$ActivitiesAndStatusRecord;
   }
 
   @override
-  void update(void Function(ActivitiesandStatusRecordBuilder)? updates) {
+  void update(void Function(ActivitiesAndStatusRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  ActivitiesandStatusRecord build() => _build();
+  ActivitiesAndStatusRecord build() => _build();
 
-  _$ActivitiesandStatusRecord _build() {
-    _$ActivitiesandStatusRecord _$result;
+  _$ActivitiesAndStatusRecord _build() {
+    _$ActivitiesAndStatusRecord _$result;
     try {
       _$result = _$v ??
-          new _$ActivitiesandStatusRecord._(
+          new _$ActivitiesAndStatusRecord._(
               toDoDate: toDoDate,
               toDoName: toDoName,
               toDoDescription: toDoDescription,
               toDoState: toDoState,
               completedDate: completedDate,
-              user: user,
               role: _role?.build(),
+              user: user,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
@@ -324,7 +324,7 @@ class ActivitiesandStatusRecordBuilder
         _role?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'ActivitiesandStatusRecord', _$failedField, e.toString());
+            r'ActivitiesAndStatusRecord', _$failedField, e.toString());
       }
       rethrow;
     }

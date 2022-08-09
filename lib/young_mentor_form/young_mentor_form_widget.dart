@@ -9,60 +9,36 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class StudentFormeeditpageWidget extends StatefulWidget {
-  const StudentFormeeditpageWidget({
-    Key? key,
-    this.schoolName,
-    this.firstName,
-    this.lastName,
-    this.studentClass,
-    this.email,
-    this.whatsappContact,
-    this.aspiration,
-    this.isLeader,
-    this.currentTinkeringActivity,
-    this.documentRefrence,
-  }) : super(key: key);
-
-  final String? schoolName;
-  final String? firstName;
-  final String? lastName;
-  final String? studentClass;
-  final String? email;
-  final String? whatsappContact;
-  final String? aspiration;
-  final bool? isLeader;
-  final String? currentTinkeringActivity;
-  final DocumentReference? documentRefrence;
+class YoungMentorFormWidget extends StatefulWidget {
+  const YoungMentorFormWidget({Key? key}) : super(key: key);
 
   @override
-  _StudentFormeeditpageWidgetState createState() =>
-      _StudentFormeeditpageWidgetState();
+  _YoungMentorFormWidgetState createState() => _YoungMentorFormWidgetState();
 }
 
-class _StudentFormeeditpageWidgetState
-    extends State<StudentFormeeditpageWidget> {
+class _YoungMentorFormWidgetState extends State<YoungMentorFormWidget> {
   String? dropDownValue1;
   TextEditingController? textController1;
   TextEditingController? textController2;
   String? dropDownValue2;
+  String? dropDownValue3;
+  String? dropDownValue4;
   TextEditingController? textController3;
   TextEditingController? textController4;
   TextEditingController? textController5;
-  bool? checkboxListTileValue;
   TextEditingController? textController6;
+  String? dropDownValue5;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController(text: widget.firstName);
-    textController2 = TextEditingController(text: widget.lastName);
-    textController3 = TextEditingController(text: widget.email);
-    textController4 = TextEditingController(text: widget.whatsappContact);
-    textController5 = TextEditingController(text: widget.aspiration);
-    textController6 =
-        TextEditingController(text: widget.currentTinkeringActivity);
+    textController1 = TextEditingController();
+    textController2 = TextEditingController();
+    textController3 = TextEditingController();
+    textController4 = TextEditingController();
+    textController5 = TextEditingController();
+    textController6 = TextEditingController();
   }
 
   @override
@@ -85,6 +61,14 @@ class _StudentFormeeditpageWidgetState
           onPressed: () async {
             Navigator.pop(context);
           },
+        ),
+        title: Text(
+          'Young Mentor Form',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: FlutterFlowTheme.of(context).title2Family,
+                color: Colors.white,
+                fontSize: 22,
+              ),
         ),
         actions: [],
         centerTitle: false,
@@ -115,58 +99,31 @@ class _StudentFormeeditpageWidgetState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'School',
+                                  'College',
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
-                                StreamBuilder<List<SchoolDataRecord>>(
-                                  stream: querySchoolDataRecord(),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50,
-                                          height: 50,
-                                          child: CircularProgressIndicator(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<SchoolDataRecord>
-                                        dropDownSchoolDataRecordList =
-                                        snapshot.data!;
-                                    return FlutterFlowDropDown(
-                                      initialOption: dropDownValue1 ??=
-                                          widget.schoolName,
-                                      options: dropDownSchoolDataRecordList
-                                          .map((e) => e.schoolName!)
-                                          .toList()
-                                          .toList(),
-                                      onChanged: (val) =>
-                                          setState(() => dropDownValue1 = val),
-                                      width: double.infinity,
-                                      height: 50,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyText1Family,
-                                            color: Colors.black,
-                                          ),
-                                      hintText: 'Please select...',
-                                      fillColor: Colors.white,
-                                      elevation: 2,
-                                      borderColor: Colors.transparent,
-                                      borderWidth: 0,
-                                      borderRadius: 0,
-                                      margin: EdgeInsetsDirectional.fromSTEB(
-                                          12, 4, 12, 4),
-                                      hidesUnderline: true,
-                                    );
-                                  },
+                                FlutterFlowDropDown(
+                                  options: ['Lanka Palli Bullaya College'],
+                                  onChanged: (val) =>
+                                      setState(() => dropDownValue1 = val),
+                                  width: double.infinity,
+                                  height: 50,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyText1Family,
+                                        color: Colors.black,
+                                      ),
+                                  hintText: 'Please select...',
+                                  fillColor: Colors.white,
+                                  elevation: 2,
+                                  borderColor: Colors.transparent,
+                                  borderWidth: 0,
+                                  borderRadius: 0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      12, 4, 12, 4),
+                                  hidesUnderline: true,
                                 ),
                               ],
                             ),
@@ -256,76 +213,127 @@ class _StudentFormeeditpageWidgetState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Class',
+                                  'Department',
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
-                                StreamBuilder<List<SchoolDataRecord>>(
-                                  stream: querySchoolDataRecord(
-                                    singleRecord: true,
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50,
-                                          height: 50,
-                                          child: CircularProgressIndicator(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<SchoolDataRecord>
-                                        dropDownSchoolDataRecordList =
-                                        snapshot.data!;
-                                    // Return an empty Container when the document does not exist.
-                                    if (snapshot.data!.isEmpty) {
-                                      return Container();
-                                    }
-                                    final dropDownSchoolDataRecord =
-                                        dropDownSchoolDataRecordList.first;
-                                    return FlutterFlowDropDown(
-                                      initialOption: dropDownValue2 ??=
-                                          widget.studentClass,
-                                      options: [
-                                        '12',
-                                        '11',
-                                        '10',
-                                        '9',
-                                        '8',
-                                        '7',
-                                        '6',
-                                        '5',
-                                        '4',
-                                        '3',
-                                        '2',
-                                        '1'
-                                      ],
-                                      onChanged: (val) =>
-                                          setState(() => dropDownValue2 = val),
-                                      width: 180,
-                                      height: 50,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyText1Family,
-                                            color: Colors.black,
-                                          ),
-                                      hintText: 'Please select...',
-                                      fillColor: Colors.white,
-                                      elevation: 2,
-                                      borderColor: Colors.transparent,
-                                      borderWidth: 0,
-                                      borderRadius: 0,
-                                      margin: EdgeInsetsDirectional.fromSTEB(
-                                          12, 4, 12, 4),
-                                      hidesUnderline: true,
-                                    );
-                                  },
+                                FlutterFlowDropDown(
+                                  options: [
+                                    'CSE',
+                                    'IT',
+                                    'ECE',
+                                    'EEE',
+                                    'MECH',
+                                    'CIVIL'
+                                  ],
+                                  onChanged: (val) =>
+                                      setState(() => dropDownValue2 = val),
+                                  width: 180,
+                                  height: 50,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyText1Family,
+                                        color: Colors.black,
+                                      ),
+                                  hintText: 'Please select...',
+                                  fillColor: Colors.white,
+                                  elevation: 2,
+                                  borderColor: Colors.transparent,
+                                  borderWidth: 0,
+                                  borderRadius: 0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      12, 4, 12, 4),
+                                  hidesUnderline: true,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(-1, 0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Study',
+                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                ),
+                                FlutterFlowDropDown(
+                                  options: [
+                                    'Diploma',
+                                    'Engineering',
+                                    'Medicine'
+                                  ],
+                                  onChanged: (val) =>
+                                      setState(() => dropDownValue3 = val),
+                                  width: 180,
+                                  height: 50,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyText1Family,
+                                        color: Colors.black,
+                                      ),
+                                  hintText: 'Please select...',
+                                  fillColor: Colors.white,
+                                  elevation: 2,
+                                  borderColor: Colors.transparent,
+                                  borderWidth: 0,
+                                  borderRadius: 0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      12, 4, 12, 4),
+                                  hidesUnderline: true,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(-1, 0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Year',
+                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                ),
+                                FlutterFlowDropDown(
+                                  options: [
+                                    'First Year',
+                                    'Second Year',
+                                    'Third Year',
+                                    'Fourth Year',
+                                    'Fifth Year',
+                                    'Sixth Year'
+                                  ],
+                                  onChanged: (val) =>
+                                      setState(() => dropDownValue4 = val),
+                                  width: 180,
+                                  height: 50,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyText1Family,
+                                        color: Colors.black,
+                                      ),
+                                  hintText: 'Please select...',
+                                  fillColor: Colors.white,
+                                  elevation: 2,
+                                  borderColor: Colors.transparent,
+                                  borderWidth: 0,
+                                  borderRadius: 0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      12, 4, 12, 4),
+                                  hidesUnderline: true,
                                 ),
                               ],
                             ),
@@ -459,28 +467,8 @@ class _StudentFormeeditpageWidgetState
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyText1,
-                                maxLines: 3,
                               ),
                             ],
-                          ),
-                        ),
-                        Theme(
-                          data: ThemeData(
-                            unselectedWidgetColor: Color(0xFF95A1AC),
-                          ),
-                          child: CheckboxListTile(
-                            value: checkboxListTileValue ??= widget.isLeader!,
-                            onChanged: (newValue) => setState(
-                                () => checkboxListTileValue = newValue!),
-                            title: Text(
-                              'Is Leader',
-                              style: FlutterFlowTheme.of(context).bodyText1,
-                            ),
-                            tileColor: Color(0xFFF5F5F5),
-                            activeColor:
-                                FlutterFlowTheme.of(context).primaryColor,
-                            dense: false,
-                            controlAffinity: ListTileControlAffinity.trailing,
                           ),
                         ),
                         Padding(
@@ -527,6 +515,49 @@ class _StudentFormeeditpageWidgetState
                             ],
                           ),
                         ),
+                        Align(
+                          alignment: AlignmentDirectional(-1, 0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Competiton Mapped',
+                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                ),
+                                FlutterFlowDropDown(
+                                  options: [
+                                    'ATL Tinkerpreneur 2022',
+                                    'ATL Marathon 2022',
+                                    'Smart India Hackathon 2022'
+                                  ],
+                                  onChanged: (val) =>
+                                      setState(() => dropDownValue5 = val),
+                                  width: 180,
+                                  height: 50,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyText1Family,
+                                        color: Colors.black,
+                                      ),
+                                  hintText: 'Please select...',
+                                  fillColor: Colors.white,
+                                  elevation: 2,
+                                  borderColor: Colors.transparent,
+                                  borderWidth: 0,
+                                  borderRadius: 0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      12, 4, 12, 4),
+                                  hidesUnderline: true,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -537,28 +568,29 @@ class _StudentFormeeditpageWidgetState
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 5),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        final studentDataUpdateData =
-                            createStudentDataRecordData(
-                          schoolName: dropDownValue1,
-                          firstName: textController1!.text,
-                          lastName: textController2!.text,
-                          studentClass: dropDownValue2,
-                          email: textController3!.text,
-                          whatsappContact: textController4!.text,
-                          aspiration: textController5!.text,
-                          teamLeader: widget.isLeader,
-                          currentTinkeringActivity:
-                              widget.currentTinkeringActivity,
+                        final youngMentorDataCreateData =
+                            createYoungMentorDataRecordData(
+                          youngMentorCollege: dropDownValue1,
+                          youngMentorFirstName: textController2!.text,
+                          youngMentorLastName: textController2!.text,
+                          youngMentorDepartment: dropDownValue2,
+                          youngMentorStudy: dropDownValue3,
+                          youngMentorYear: dropDownValue4,
+                          youngMentorEmail: textController3!.text,
+                          youngMentorWhatsappContact: textController4!.text,
+                          youngMentorCurrentExperiment: textController6!.text,
+                          youngMentorCompetitionMapped: dropDownValue5,
                         );
-                        await widget.documentRefrence!
-                            .update(studentDataUpdateData);
+                        await YoungMentorDataRecord.collection
+                            .doc()
+                            .set(youngMentorDataCreateData);
                         setState(() {
                           textController1?.clear();
                           textController2?.clear();
                           textController3?.clear();
+                          textController4?.clear();
                           textController5?.clear();
                           textController6?.clear();
-                          textController4?.clear();
                         });
                         await showDialog(
                           context: context,
@@ -575,9 +607,8 @@ class _StudentFormeeditpageWidgetState
                             );
                           },
                         );
-                        Navigator.pop(context);
                       },
-                      text: 'Update',
+                      text: 'Submit',
                       options: FFButtonOptions(
                         width: 130,
                         height: 40,

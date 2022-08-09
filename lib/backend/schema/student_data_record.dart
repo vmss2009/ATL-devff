@@ -4,12 +4,12 @@ import 'index.dart';
 import 'serializers.dart';
 import 'package:built_value/built_value.dart';
 
-part 'studentdata_record.g.dart';
+part 'student_data_record.g.dart';
 
-abstract class StudentdataRecord
-    implements Built<StudentdataRecord, StudentdataRecordBuilder> {
-  static Serializer<StudentdataRecord> get serializer =>
-      _$studentdataRecordSerializer;
+abstract class StudentDataRecord
+    implements Built<StudentDataRecord, StudentDataRecordBuilder> {
+  static Serializer<StudentDataRecord> get serializer =>
+      _$studentDataRecordSerializer;
 
   String? get schoolName;
 
@@ -33,7 +33,7 @@ abstract class StudentdataRecord
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
-  static void _initializeBuilder(StudentdataRecordBuilder builder) => builder
+  static void _initializeBuilder(StudentDataRecordBuilder builder) => builder
     ..schoolName = ''
     ..firstName = ''
     ..lastName = ''
@@ -45,27 +45,27 @@ abstract class StudentdataRecord
     ..currentTinkeringActivity = '';
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('studentdata');
+      FirebaseFirestore.instance.collection('studentData');
 
-  static Stream<StudentdataRecord> getDocument(DocumentReference ref) => ref
+  static Stream<StudentDataRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
       .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  static Future<StudentdataRecord> getDocumentOnce(DocumentReference ref) => ref
+  static Future<StudentDataRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
       .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  StudentdataRecord._();
-  factory StudentdataRecord([void Function(StudentdataRecordBuilder) updates]) =
-      _$StudentdataRecord;
+  StudentDataRecord._();
+  factory StudentDataRecord([void Function(StudentDataRecordBuilder) updates]) =
+      _$StudentDataRecord;
 
-  static StudentdataRecord getDocumentFromData(
+  static StudentDataRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
           {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
-Map<String, dynamic> createStudentdataRecordData({
+Map<String, dynamic> createStudentDataRecordData({
   String? schoolName,
   String? firstName,
   String? lastName,
@@ -77,8 +77,8 @@ Map<String, dynamic> createStudentdataRecordData({
   String? currentTinkeringActivity,
 }) {
   final firestoreData = serializers.toFirestore(
-    StudentdataRecord.serializer,
-    StudentdataRecord(
+    StudentDataRecord.serializer,
+    StudentDataRecord(
       (s) => s
         ..schoolName = schoolName
         ..firstName = firstName

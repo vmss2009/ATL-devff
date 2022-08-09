@@ -4,13 +4,13 @@ import 'index.dart';
 import 'serializers.dart';
 import 'package:built_value/built_value.dart';
 
-part 'activitiesand_status_record.g.dart';
+part 'activities_and_status_record.g.dart';
 
-abstract class ActivitiesandStatusRecord
+abstract class ActivitiesAndStatusRecord
     implements
-        Built<ActivitiesandStatusRecord, ActivitiesandStatusRecordBuilder> {
-  static Serializer<ActivitiesandStatusRecord> get serializer =>
-      _$activitiesandStatusRecordSerializer;
+        Built<ActivitiesAndStatusRecord, ActivitiesAndStatusRecordBuilder> {
+  static Serializer<ActivitiesAndStatusRecord> get serializer =>
+      _$activitiesAndStatusRecordSerializer;
 
   DateTime? get toDoDate;
 
@@ -22,15 +22,15 @@ abstract class ActivitiesandStatusRecord
 
   DateTime? get completedDate;
 
-  DocumentReference? get user;
-
   BuiltList<String>? get role;
+
+  DocumentReference? get user;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
-  static void _initializeBuilder(ActivitiesandStatusRecordBuilder builder) =>
+  static void _initializeBuilder(ActivitiesAndStatusRecordBuilder builder) =>
       builder
         ..toDoName = ''
         ..toDoDescription = ''
@@ -38,29 +38,29 @@ abstract class ActivitiesandStatusRecord
         ..role = ListBuilder();
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('ActivitiesandStatus');
+      FirebaseFirestore.instance.collection('activitiesAndStatus');
 
-  static Stream<ActivitiesandStatusRecord> getDocument(DocumentReference ref) =>
+  static Stream<ActivitiesAndStatusRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map(
           (s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  static Future<ActivitiesandStatusRecord> getDocumentOnce(
+  static Future<ActivitiesAndStatusRecord> getDocumentOnce(
           DocumentReference ref) =>
       ref.get().then(
           (s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  ActivitiesandStatusRecord._();
-  factory ActivitiesandStatusRecord(
-          [void Function(ActivitiesandStatusRecordBuilder) updates]) =
-      _$ActivitiesandStatusRecord;
+  ActivitiesAndStatusRecord._();
+  factory ActivitiesAndStatusRecord(
+          [void Function(ActivitiesAndStatusRecordBuilder) updates]) =
+      _$ActivitiesAndStatusRecord;
 
-  static ActivitiesandStatusRecord getDocumentFromData(
+  static ActivitiesAndStatusRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
           {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
-Map<String, dynamic> createActivitiesandStatusRecordData({
+Map<String, dynamic> createActivitiesAndStatusRecordData({
   DateTime? toDoDate,
   String? toDoName,
   String? toDoDescription,
@@ -69,16 +69,16 @@ Map<String, dynamic> createActivitiesandStatusRecordData({
   DocumentReference? user,
 }) {
   final firestoreData = serializers.toFirestore(
-    ActivitiesandStatusRecord.serializer,
-    ActivitiesandStatusRecord(
+    ActivitiesAndStatusRecord.serializer,
+    ActivitiesAndStatusRecord(
       (a) => a
         ..toDoDate = toDoDate
         ..toDoName = toDoName
         ..toDoDescription = toDoDescription
         ..toDoState = toDoState
         ..completedDate = completedDate
-        ..user = user
-        ..role = null,
+        ..role = null
+        ..user = user,
     ),
   );
 

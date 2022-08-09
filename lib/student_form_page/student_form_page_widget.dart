@@ -97,11 +97,11 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Student School',
+                                  'School',
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
-                                StreamBuilder<List<SchooldataRecord>>(
-                                  stream: querySchooldataRecord(),
+                                StreamBuilder<List<SchoolDataRecord>>(
+                                  stream: querySchoolDataRecord(),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -116,11 +116,11 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                         ),
                                       );
                                     }
-                                    List<SchooldataRecord>
-                                        dropDownSchooldataRecordList =
+                                    List<SchoolDataRecord>
+                                        dropDownSchoolDataRecordList =
                                         snapshot.data!;
                                     return FlutterFlowDropDown(
-                                      options: dropDownSchooldataRecordList
+                                      options: dropDownSchoolDataRecordList
                                           .map((e) => e.schoolName!)
                                           .toList()
                                           .toList(),
@@ -159,7 +159,7 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Student Name',
+                                'Name',
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                               TextFormField(
@@ -239,8 +239,8 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                   'Class',
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
-                                StreamBuilder<List<SchooldataRecord>>(
-                                  stream: querySchooldataRecord(),
+                                StreamBuilder<List<SchoolDataRecord>>(
+                                  stream: querySchoolDataRecord(),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -255,8 +255,8 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                         ),
                                       );
                                     }
-                                    List<SchooldataRecord>
-                                        dropDownSchooldataRecordList =
+                                    List<SchoolDataRecord>
+                                        dropDownSchoolDataRecordList =
                                         snapshot.data!;
                                     return FlutterFlowDropDown(
                                       options: [
@@ -507,8 +507,8 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 5),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        final studentdataCreateData =
-                            createStudentdataRecordData(
+                        final studentDataCreateData =
+                            createStudentDataRecordData(
                           schoolName: dropDownValue1,
                           firstName: textController1!.text,
                           lastName: textController2!.text,
@@ -519,9 +519,9 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                           teamLeader: checkboxListTileValue,
                           currentTinkeringActivity: textController6!.text,
                         );
-                        await StudentdataRecord.collection
+                        await StudentDataRecord.collection
                             .doc()
-                            .set(studentdataCreateData);
+                            .set(studentDataCreateData);
                         setState(() {
                           textController1?.clear();
                           textController2?.clear();

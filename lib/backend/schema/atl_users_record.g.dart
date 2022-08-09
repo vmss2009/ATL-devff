@@ -1,23 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'atlusers_record.dart';
+part of 'atl_users_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<AtlusersRecord> _$atlusersRecordSerializer =
-    new _$AtlusersRecordSerializer();
+Serializer<AtlUsersRecord> _$atlUsersRecordSerializer =
+    new _$AtlUsersRecordSerializer();
 
-class _$AtlusersRecordSerializer
-    implements StructuredSerializer<AtlusersRecord> {
+class _$AtlUsersRecordSerializer
+    implements StructuredSerializer<AtlUsersRecord> {
   @override
-  final Iterable<Type> types = const [AtlusersRecord, _$AtlusersRecord];
+  final Iterable<Type> types = const [AtlUsersRecord, _$AtlUsersRecord];
   @override
-  final String wireName = 'AtlusersRecord';
+  final String wireName = 'AtlUsersRecord';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, AtlusersRecord object,
+  Iterable<Object?> serialize(Serializers serializers, AtlUsersRecord object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
@@ -75,10 +75,10 @@ class _$AtlusersRecordSerializer
   }
 
   @override
-  AtlusersRecord deserialize(
+  AtlUsersRecord deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new AtlusersRecordBuilder();
+    final result = new AtlUsersRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -123,7 +123,7 @@ class _$AtlusersRecordSerializer
   }
 }
 
-class _$AtlusersRecord extends AtlusersRecord {
+class _$AtlUsersRecord extends AtlUsersRecord {
   @override
   final String? email;
   @override
@@ -139,10 +139,10 @@ class _$AtlusersRecord extends AtlusersRecord {
   @override
   final DocumentReference<Object?>? ffRef;
 
-  factory _$AtlusersRecord([void Function(AtlusersRecordBuilder)? updates]) =>
-      (new AtlusersRecordBuilder()..update(updates))._build();
+  factory _$AtlUsersRecord([void Function(AtlUsersRecordBuilder)? updates]) =>
+      (new AtlUsersRecordBuilder()..update(updates))._build();
 
-  _$AtlusersRecord._(
+  _$AtlUsersRecord._(
       {this.email,
       this.displayName,
       this.photoUrl,
@@ -153,17 +153,17 @@ class _$AtlusersRecord extends AtlusersRecord {
       : super._();
 
   @override
-  AtlusersRecord rebuild(void Function(AtlusersRecordBuilder) updates) =>
+  AtlUsersRecord rebuild(void Function(AtlUsersRecordBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AtlusersRecordBuilder toBuilder() =>
-      new AtlusersRecordBuilder()..replace(this);
+  AtlUsersRecordBuilder toBuilder() =>
+      new AtlUsersRecordBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AtlusersRecord &&
+    return other is AtlUsersRecord &&
         email == other.email &&
         displayName == other.displayName &&
         photoUrl == other.photoUrl &&
@@ -189,7 +189,7 @@ class _$AtlusersRecord extends AtlusersRecord {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'AtlusersRecord')
+    return (newBuiltValueToStringHelper(r'AtlUsersRecord')
           ..add('email', email)
           ..add('displayName', displayName)
           ..add('photoUrl', photoUrl)
@@ -201,9 +201,9 @@ class _$AtlusersRecord extends AtlusersRecord {
   }
 }
 
-class AtlusersRecordBuilder
-    implements Builder<AtlusersRecord, AtlusersRecordBuilder> {
-  _$AtlusersRecord? _$v;
+class AtlUsersRecordBuilder
+    implements Builder<AtlUsersRecord, AtlUsersRecordBuilder> {
+  _$AtlUsersRecord? _$v;
 
   String? _email;
   String? get email => _$this._email;
@@ -233,11 +233,11 @@ class AtlusersRecordBuilder
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  AtlusersRecordBuilder() {
-    AtlusersRecord._initializeBuilder(this);
+  AtlUsersRecordBuilder() {
+    AtlUsersRecord._initializeBuilder(this);
   }
 
-  AtlusersRecordBuilder get _$this {
+  AtlUsersRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _email = $v.email;
@@ -253,22 +253,22 @@ class AtlusersRecordBuilder
   }
 
   @override
-  void replace(AtlusersRecord other) {
+  void replace(AtlUsersRecord other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$AtlusersRecord;
+    _$v = other as _$AtlUsersRecord;
   }
 
   @override
-  void update(void Function(AtlusersRecordBuilder)? updates) {
+  void update(void Function(AtlUsersRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  AtlusersRecord build() => _build();
+  AtlUsersRecord build() => _build();
 
-  _$AtlusersRecord _build() {
+  _$AtlUsersRecord _build() {
     final _$result = _$v ??
-        new _$AtlusersRecord._(
+        new _$AtlUsersRecord._(
             email: email,
             displayName: displayName,
             photoUrl: photoUrl,

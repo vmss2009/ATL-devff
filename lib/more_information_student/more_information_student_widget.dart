@@ -78,7 +78,7 @@ class _MoreInformationStudentWidgetState
                     children: [
                       Expanded(
                         child: Text(
-                          'Student school',
+                          'School',
                           style: FlutterFlowTheme.of(context).subtitle2,
                         ),
                       ),

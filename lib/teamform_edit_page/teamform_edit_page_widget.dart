@@ -91,7 +91,7 @@ class _TeamformEditPageWidgetState extends State<TeamformEditPageWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Team Name',
+                                  'Name',
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
                                 TextFormField(
@@ -136,15 +136,15 @@ class _TeamformEditPageWidgetState extends State<TeamformEditPageWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Team Leader',
+                                'Leader',
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0, 0),
-                                child: StreamBuilder<List<StudentdataRecord>>(
-                                  stream: queryStudentdataRecord(
-                                    queryBuilder: (studentdataRecord) =>
-                                        studentdataRecord.where('teamLeader',
+                                child: StreamBuilder<List<StudentDataRecord>>(
+                                  stream: queryStudentDataRecord(
+                                    queryBuilder: (studentDataRecord) =>
+                                        studentDataRecord.where('teamLeader',
                                             isEqualTo: true),
                                   ),
                                   builder: (context, snapshot) {
@@ -161,13 +161,13 @@ class _TeamformEditPageWidgetState extends State<TeamformEditPageWidget> {
                                         ),
                                       );
                                     }
-                                    List<StudentdataRecord>
-                                        dropDownStudentdataRecordList =
+                                    List<StudentDataRecord>
+                                        dropDownStudentDataRecordList =
                                         snapshot.data!;
                                     return FlutterFlowDropDown(
                                       initialOption: dropDownValue1 ??=
                                           widget.teamLeader,
-                                      options: dropDownStudentdataRecordList
+                                      options: dropDownStudentDataRecordList
                                           .map((e) => e.firstName!)
                                           .toList()
                                           .toList(),
@@ -206,13 +206,13 @@ class _TeamformEditPageWidgetState extends State<TeamformEditPageWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Team members',
+                                'Members',
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
-                              StreamBuilder<List<StudentdataRecord>>(
-                                stream: queryStudentdataRecord(
-                                  queryBuilder: (studentdataRecord) =>
-                                      studentdataRecord.where('teamLeader',
+                              StreamBuilder<List<StudentDataRecord>>(
+                                stream: queryStudentDataRecord(
+                                  queryBuilder: (studentDataRecord) =>
+                                      studentDataRecord.where('teamLeader',
                                           isEqualTo: false),
                                 ),
                                 builder: (context, snapshot) {
@@ -229,11 +229,11 @@ class _TeamformEditPageWidgetState extends State<TeamformEditPageWidget> {
                                       ),
                                     );
                                   }
-                                  List<StudentdataRecord>
-                                      dropDownStudentdataRecordList =
+                                  List<StudentDataRecord>
+                                      dropDownStudentDataRecordList =
                                       snapshot.data!;
                                   return FlutterFlowDropDown(
-                                    options: dropDownStudentdataRecordList
+                                    options: dropDownStudentDataRecordList
                                         .map((e) => e.firstName!)
                                         .toList()
                                         .toList(),
@@ -271,7 +271,7 @@ class _TeamformEditPageWidgetState extends State<TeamformEditPageWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Current Experiment',
+                                'Current Tinkering Activity',
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                               TextFormField(
@@ -279,7 +279,7 @@ class _TeamformEditPageWidgetState extends State<TeamformEditPageWidget> {
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Experiment',
+                                  hintText: 'Current Tinkering Activity',
                                   hintStyle:
                                       FlutterFlowTheme.of(context).bodyText2,
                                   enabledBorder: UnderlineInputBorder(
@@ -318,8 +318,8 @@ class _TeamformEditPageWidgetState extends State<TeamformEditPageWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 5),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        final teamdataUpdateData = {
-                          ...createTeamdataRecordData(
+                        final teamDataUpdateData = {
+                          ...createTeamDataRecordData(
                             experiment: textController2!.text,
                             teamLeader: dropDownValue1,
                             teamName: textController1!.text,
@@ -327,7 +327,7 @@ class _TeamformEditPageWidgetState extends State<TeamformEditPageWidget> {
                           'teamMember': FieldValue.arrayUnion(['1']),
                         };
                         await widget.documentRefrence!
-                            .update(teamdataUpdateData);
+                            .update(teamDataUpdateData);
                         setState(() {
                           textController1?.clear();
                           textController2?.clear();

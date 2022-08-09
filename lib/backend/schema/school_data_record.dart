@@ -4,12 +4,12 @@ import 'index.dart';
 import 'serializers.dart';
 import 'package:built_value/built_value.dart';
 
-part 'schooldata_record.g.dart';
+part 'school_data_record.g.dart';
 
-abstract class SchooldataRecord
-    implements Built<SchooldataRecord, SchooldataRecordBuilder> {
-  static Serializer<SchooldataRecord> get serializer =>
-      _$schooldataRecordSerializer;
+abstract class SchoolDataRecord
+    implements Built<SchoolDataRecord, SchoolDataRecordBuilder> {
+  static Serializer<SchoolDataRecord> get serializer =>
+      _$schoolDataRecordSerializer;
 
   String? get schoolName;
 
@@ -46,7 +46,7 @@ abstract class SchooldataRecord
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
-  static void _initializeBuilder(SchooldataRecordBuilder builder) => builder
+  static void _initializeBuilder(SchoolDataRecordBuilder builder) => builder
     ..schoolName = ''
     ..inchargeEmail = ''
     ..principalEmail = ''
@@ -64,27 +64,27 @@ abstract class SchooldataRecord
     ..atlschool = false;
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('schooldata');
+      FirebaseFirestore.instance.collection('schoolData');
 
-  static Stream<SchooldataRecord> getDocument(DocumentReference ref) => ref
+  static Stream<SchoolDataRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
       .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  static Future<SchooldataRecord> getDocumentOnce(DocumentReference ref) => ref
+  static Future<SchoolDataRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
       .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  SchooldataRecord._();
-  factory SchooldataRecord([void Function(SchooldataRecordBuilder) updates]) =
-      _$SchooldataRecord;
+  SchoolDataRecord._();
+  factory SchoolDataRecord([void Function(SchoolDataRecordBuilder) updates]) =
+      _$SchoolDataRecord;
 
-  static SchooldataRecord getDocumentFromData(
+  static SchoolDataRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
           {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
-Map<String, dynamic> createSchooldataRecordData({
+Map<String, dynamic> createSchoolDataRecordData({
   String? schoolName,
   String? inchargeEmail,
   String? principalEmail,
@@ -102,8 +102,8 @@ Map<String, dynamic> createSchooldataRecordData({
   bool? atlschool,
 }) {
   final firestoreData = serializers.toFirestore(
-    SchooldataRecord.serializer,
-    SchooldataRecord(
+    SchoolDataRecord.serializer,
+    SchoolDataRecord(
       (s) => s
         ..schoolName = schoolName
         ..inchargeEmail = inchargeEmail

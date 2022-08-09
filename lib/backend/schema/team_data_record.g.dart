@@ -1,23 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'teamdata_record.dart';
+part of 'team_data_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<TeamdataRecord> _$teamdataRecordSerializer =
-    new _$TeamdataRecordSerializer();
+Serializer<TeamDataRecord> _$teamDataRecordSerializer =
+    new _$TeamDataRecordSerializer();
 
-class _$TeamdataRecordSerializer
-    implements StructuredSerializer<TeamdataRecord> {
+class _$TeamDataRecordSerializer
+    implements StructuredSerializer<TeamDataRecord> {
   @override
-  final Iterable<Type> types = const [TeamdataRecord, _$TeamdataRecord];
+  final Iterable<Type> types = const [TeamDataRecord, _$TeamDataRecord];
   @override
-  final String wireName = 'TeamdataRecord';
+  final String wireName = 'TeamDataRecord';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, TeamdataRecord object,
+  Iterable<Object?> serialize(Serializers serializers, TeamDataRecord object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
@@ -62,10 +62,10 @@ class _$TeamdataRecordSerializer
   }
 
   @override
-  TeamdataRecord deserialize(
+  TeamDataRecord deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new TeamdataRecordBuilder();
+    final result = new TeamDataRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -104,7 +104,7 @@ class _$TeamdataRecordSerializer
   }
 }
 
-class _$TeamdataRecord extends TeamdataRecord {
+class _$TeamDataRecord extends TeamDataRecord {
   @override
   final String? experiment;
   @override
@@ -116,10 +116,10 @@ class _$TeamdataRecord extends TeamdataRecord {
   @override
   final DocumentReference<Object?>? ffRef;
 
-  factory _$TeamdataRecord([void Function(TeamdataRecordBuilder)? updates]) =>
-      (new TeamdataRecordBuilder()..update(updates))._build();
+  factory _$TeamDataRecord([void Function(TeamDataRecordBuilder)? updates]) =>
+      (new TeamDataRecordBuilder()..update(updates))._build();
 
-  _$TeamdataRecord._(
+  _$TeamDataRecord._(
       {this.experiment,
       this.teamLeader,
       this.teamMember,
@@ -128,17 +128,17 @@ class _$TeamdataRecord extends TeamdataRecord {
       : super._();
 
   @override
-  TeamdataRecord rebuild(void Function(TeamdataRecordBuilder) updates) =>
+  TeamDataRecord rebuild(void Function(TeamDataRecordBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  TeamdataRecordBuilder toBuilder() =>
-      new TeamdataRecordBuilder()..replace(this);
+  TeamDataRecordBuilder toBuilder() =>
+      new TeamDataRecordBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is TeamdataRecord &&
+    return other is TeamDataRecord &&
         experiment == other.experiment &&
         teamLeader == other.teamLeader &&
         teamMember == other.teamMember &&
@@ -158,7 +158,7 @@ class _$TeamdataRecord extends TeamdataRecord {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'TeamdataRecord')
+    return (newBuiltValueToStringHelper(r'TeamDataRecord')
           ..add('experiment', experiment)
           ..add('teamLeader', teamLeader)
           ..add('teamMember', teamMember)
@@ -168,9 +168,9 @@ class _$TeamdataRecord extends TeamdataRecord {
   }
 }
 
-class TeamdataRecordBuilder
-    implements Builder<TeamdataRecord, TeamdataRecordBuilder> {
-  _$TeamdataRecord? _$v;
+class TeamDataRecordBuilder
+    implements Builder<TeamDataRecord, TeamDataRecordBuilder> {
+  _$TeamDataRecord? _$v;
 
   String? _experiment;
   String? get experiment => _$this._experiment;
@@ -194,11 +194,11 @@ class TeamdataRecordBuilder
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  TeamdataRecordBuilder() {
-    TeamdataRecord._initializeBuilder(this);
+  TeamDataRecordBuilder() {
+    TeamDataRecord._initializeBuilder(this);
   }
 
-  TeamdataRecordBuilder get _$this {
+  TeamDataRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _experiment = $v.experiment;
@@ -212,24 +212,24 @@ class TeamdataRecordBuilder
   }
 
   @override
-  void replace(TeamdataRecord other) {
+  void replace(TeamDataRecord other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$TeamdataRecord;
+    _$v = other as _$TeamDataRecord;
   }
 
   @override
-  void update(void Function(TeamdataRecordBuilder)? updates) {
+  void update(void Function(TeamDataRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  TeamdataRecord build() => _build();
+  TeamDataRecord build() => _build();
 
-  _$TeamdataRecord _build() {
-    _$TeamdataRecord _$result;
+  _$TeamDataRecord _build() {
+    _$TeamDataRecord _$result;
     try {
       _$result = _$v ??
-          new _$TeamdataRecord._(
+          new _$TeamDataRecord._(
               experiment: experiment,
               teamLeader: teamLeader,
               teamMember: _teamMember?.build(),
@@ -242,7 +242,7 @@ class TeamdataRecordBuilder
         _teamMember?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'TeamdataRecord', _$failedField, e.toString());
+            r'TeamDataRecord', _$failedField, e.toString());
       }
       rethrow;
     }

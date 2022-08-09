@@ -1,23 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'studentdata_record.dart';
+part of 'student_data_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<StudentdataRecord> _$studentdataRecordSerializer =
-    new _$StudentdataRecordSerializer();
+Serializer<StudentDataRecord> _$studentDataRecordSerializer =
+    new _$StudentDataRecordSerializer();
 
-class _$StudentdataRecordSerializer
-    implements StructuredSerializer<StudentdataRecord> {
+class _$StudentDataRecordSerializer
+    implements StructuredSerializer<StudentDataRecord> {
   @override
-  final Iterable<Type> types = const [StudentdataRecord, _$StudentdataRecord];
+  final Iterable<Type> types = const [StudentDataRecord, _$StudentDataRecord];
   @override
-  final String wireName = 'StudentdataRecord';
+  final String wireName = 'StudentDataRecord';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, StudentdataRecord object,
+  Iterable<Object?> serialize(Serializers serializers, StudentDataRecord object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
@@ -96,10 +96,10 @@ class _$StudentdataRecordSerializer
   }
 
   @override
-  StudentdataRecord deserialize(
+  StudentDataRecord deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new StudentdataRecordBuilder();
+    final result = new StudentDataRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -156,7 +156,7 @@ class _$StudentdataRecordSerializer
   }
 }
 
-class _$StudentdataRecord extends StudentdataRecord {
+class _$StudentDataRecord extends StudentDataRecord {
   @override
   final String? schoolName;
   @override
@@ -178,11 +178,11 @@ class _$StudentdataRecord extends StudentdataRecord {
   @override
   final DocumentReference<Object?>? ffRef;
 
-  factory _$StudentdataRecord(
-          [void Function(StudentdataRecordBuilder)? updates]) =>
-      (new StudentdataRecordBuilder()..update(updates))._build();
+  factory _$StudentDataRecord(
+          [void Function(StudentDataRecordBuilder)? updates]) =>
+      (new StudentDataRecordBuilder()..update(updates))._build();
 
-  _$StudentdataRecord._(
+  _$StudentDataRecord._(
       {this.schoolName,
       this.firstName,
       this.lastName,
@@ -196,17 +196,17 @@ class _$StudentdataRecord extends StudentdataRecord {
       : super._();
 
   @override
-  StudentdataRecord rebuild(void Function(StudentdataRecordBuilder) updates) =>
+  StudentDataRecord rebuild(void Function(StudentDataRecordBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  StudentdataRecordBuilder toBuilder() =>
-      new StudentdataRecordBuilder()..replace(this);
+  StudentDataRecordBuilder toBuilder() =>
+      new StudentDataRecordBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is StudentdataRecord &&
+    return other is StudentDataRecord &&
         schoolName == other.schoolName &&
         firstName == other.firstName &&
         lastName == other.lastName &&
@@ -243,7 +243,7 @@ class _$StudentdataRecord extends StudentdataRecord {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'StudentdataRecord')
+    return (newBuiltValueToStringHelper(r'StudentDataRecord')
           ..add('schoolName', schoolName)
           ..add('firstName', firstName)
           ..add('lastName', lastName)
@@ -258,9 +258,9 @@ class _$StudentdataRecord extends StudentdataRecord {
   }
 }
 
-class StudentdataRecordBuilder
-    implements Builder<StudentdataRecord, StudentdataRecordBuilder> {
-  _$StudentdataRecord? _$v;
+class StudentDataRecordBuilder
+    implements Builder<StudentDataRecord, StudentDataRecordBuilder> {
+  _$StudentDataRecord? _$v;
 
   String? _schoolName;
   String? get schoolName => _$this._schoolName;
@@ -304,11 +304,11 @@ class StudentdataRecordBuilder
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  StudentdataRecordBuilder() {
-    StudentdataRecord._initializeBuilder(this);
+  StudentDataRecordBuilder() {
+    StudentDataRecord._initializeBuilder(this);
   }
 
-  StudentdataRecordBuilder get _$this {
+  StudentDataRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _schoolName = $v.schoolName;
@@ -327,22 +327,22 @@ class StudentdataRecordBuilder
   }
 
   @override
-  void replace(StudentdataRecord other) {
+  void replace(StudentDataRecord other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$StudentdataRecord;
+    _$v = other as _$StudentDataRecord;
   }
 
   @override
-  void update(void Function(StudentdataRecordBuilder)? updates) {
+  void update(void Function(StudentDataRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  StudentdataRecord build() => _build();
+  StudentDataRecord build() => _build();
 
-  _$StudentdataRecord _build() {
+  _$StudentDataRecord _build() {
     final _$result = _$v ??
-        new _$StudentdataRecord._(
+        new _$StudentDataRecord._(
             schoolName: schoolName,
             firstName: firstName,
             lastName: lastName,

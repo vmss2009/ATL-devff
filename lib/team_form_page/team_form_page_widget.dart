@@ -88,7 +88,7 @@ class _TeamFormPageWidgetState extends State<TeamFormPageWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Team Name',
+                                  'Name',
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
                                 TextFormField(
@@ -133,15 +133,15 @@ class _TeamFormPageWidgetState extends State<TeamFormPageWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Team Leader',
+                                'Leader',
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0, 0),
-                                child: StreamBuilder<List<StudentdataRecord>>(
-                                  stream: queryStudentdataRecord(
-                                    queryBuilder: (studentdataRecord) =>
-                                        studentdataRecord.where('teamLeader',
+                                child: StreamBuilder<List<StudentDataRecord>>(
+                                  stream: queryStudentDataRecord(
+                                    queryBuilder: (studentDataRecord) =>
+                                        studentDataRecord.where('teamLeader',
                                             isEqualTo: true),
                                   ),
                                   builder: (context, snapshot) {
@@ -158,11 +158,11 @@ class _TeamFormPageWidgetState extends State<TeamFormPageWidget> {
                                         ),
                                       );
                                     }
-                                    List<StudentdataRecord>
-                                        dropDownStudentdataRecordList =
+                                    List<StudentDataRecord>
+                                        dropDownStudentDataRecordList =
                                         snapshot.data!;
                                     return FlutterFlowDropDown(
-                                      options: dropDownStudentdataRecordList
+                                      options: dropDownStudentDataRecordList
                                           .map((e) => e.firstName!)
                                           .toList()
                                           .toList(),
@@ -194,145 +194,149 @@ class _TeamFormPageWidgetState extends State<TeamFormPageWidget> {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Team members',
-                                style: FlutterFlowTheme.of(context).bodyText1,
-                              ),
-                              Builder(
-                                builder: (context) {
-                                  final children =
-                                      FFAppState().noofchildren.toList();
-                                  return Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: List.generate(children.length,
-                                        (childrenIndex) {
-                                      final childrenItem =
-                                          children[childrenIndex];
-                                      return StreamBuilder<
-                                          List<StudentdataRecord>>(
-                                        stream: queryStudentdataRecord(
-                                          queryBuilder: (studentdataRecord) =>
-                                              studentdataRecord.where(
-                                                  'teamLeader',
-                                                  isEqualTo: false),
-                                        ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50,
-                                                height: 50,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryColor,
+                        Align(
+                          alignment: AlignmentDirectional(-1, 0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Members',
+                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                ),
+                                Builder(
+                                  builder: (context) {
+                                    final children =
+                                        FFAppState().noofchildren.toList();
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: List.generate(children.length,
+                                          (childrenIndex) {
+                                        final childrenItem =
+                                            children[childrenIndex];
+                                        return StreamBuilder<
+                                            List<StudentDataRecord>>(
+                                          stream: queryStudentDataRecord(
+                                            queryBuilder: (studentDataRecord) =>
+                                                studentDataRecord.where(
+                                                    'teamLeader',
+                                                    isEqualTo: false),
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50,
+                                                  height: 50,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryColor,
+                                                  ),
                                                 ),
-                                              ),
+                                              );
+                                            }
+                                            List<StudentDataRecord>
+                                                dropDownStudentDataRecordList =
+                                                snapshot.data!;
+                                            return FlutterFlowDropDown(
+                                              options:
+                                                  dropDownStudentDataRecordList
+                                                      .map((e) => e.firstName!)
+                                                      .toList()
+                                                      .toList(),
+                                              onChanged: (val) => setState(() =>
+                                                  dropDownValueMap2[
+                                                      childrenItem] = val!),
+                                              width: 180,
+                                              height: 50,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1Family,
+                                                        color: Colors.black,
+                                                      ),
+                                              hintText: 'Please select...',
+                                              fillColor: Colors.white,
+                                              elevation: 2,
+                                              borderColor: Colors.transparent,
+                                              borderWidth: 0,
+                                              borderRadius: 0,
+                                              margin: EdgeInsetsDirectional
+                                                  .fromSTEB(12, 4, 12, 4),
+                                              hidesUnderline: true,
                                             );
-                                          }
-                                          List<StudentdataRecord>
-                                              dropDownStudentdataRecordList =
-                                              snapshot.data!;
-                                          return FlutterFlowDropDown(
-                                            options:
-                                                dropDownStudentdataRecordList
-                                                    .map((e) => e.firstName!)
-                                                    .toList()
-                                                    .toList(),
-                                            onChanged: (val) => setState(() =>
-                                                dropDownValueMap2[
-                                                    childrenItem] = val!),
-                                            width: 180,
-                                            height: 50,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1Family,
-                                                      color: Colors.black,
-                                                    ),
-                                            hintText: 'Please select...',
-                                            fillColor: Colors.white,
-                                            elevation: 2,
-                                            borderColor: Colors.transparent,
-                                            borderWidth: 0,
-                                            borderRadius: 0,
-                                            margin:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12, 4, 12, 4),
-                                            hidesUnderline: true,
-                                          );
-                                        },
-                                      );
-                                    }),
-                                  );
-                                },
-                              ),
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  setState(() => FFAppState()
-                                      .noofchildren
-                                      .add(FFAppState().noofchildren.length));
-                                },
-                                text: 'Add',
-                                options: FFButtonOptions(
-                                  width: 130,
-                                  height: 40,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .subtitle2Family,
-                                        color: Colors.white,
-                                      ),
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8),
+                                          },
+                                        );
+                                      }),
+                                    );
+                                  },
                                 ),
-                              ),
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  setState(() => FFAppState()
-                                      .noofchildren
-                                      .remove(
-                                          FFAppState().noofchildren.length));
-                                },
-                                text: 'Delete',
-                                options: FFButtonOptions(
-                                  width: 130,
-                                  height: 40,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .subtitle2Family,
-                                        color: Colors.white,
-                                      ),
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1,
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    setState(() => FFAppState()
+                                        .noofchildren
+                                        .add(FFAppState().noofchildren.length));
+                                  },
+                                  text: 'Add',
+                                  options: FFButtonOptions(
+                                    width: 130,
+                                    height: 40,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle2Family,
+                                          color: Colors.white,
+                                        ),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
                                 ),
-                              ),
-                            ],
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    setState(() => FFAppState()
+                                        .noofchildren
+                                        .remove(
+                                            FFAppState().noofchildren.length));
+                                  },
+                                  text: 'Delete',
+                                  options: FFButtonOptions(
+                                    width: 130,
+                                    height: 40,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle2Family,
+                                          color: Colors.white,
+                                        ),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         Padding(
@@ -342,7 +346,7 @@ class _TeamFormPageWidgetState extends State<TeamFormPageWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Current Experiment',
+                                'Current Tinkering Activity',
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                               TextFormField(
@@ -350,7 +354,7 @@ class _TeamFormPageWidgetState extends State<TeamFormPageWidget> {
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Experiment',
+                                  hintText: 'Current Tinkering Activity',
                                   hintStyle:
                                       FlutterFlowTheme.of(context).bodyText2,
                                   enabledBorder: UnderlineInputBorder(
@@ -389,17 +393,17 @@ class _TeamFormPageWidgetState extends State<TeamFormPageWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 5),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        final teamdataCreateData = {
-                          ...createTeamdataRecordData(
+                        final teamDataCreateData = {
+                          ...createTeamDataRecordData(
                             experiment: textController2!.text,
                             teamLeader: dropDownValue1,
                             teamName: textController1!.text,
                           ),
                           'teamMember': FFAppState().schools,
                         };
-                        await TeamdataRecord.collection
+                        await TeamDataRecord.collection
                             .doc()
-                            .set(teamdataCreateData);
+                            .set(teamDataCreateData);
                         setState(() {
                           textController2?.clear();
                           textController1?.clear();

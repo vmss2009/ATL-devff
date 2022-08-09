@@ -22,7 +22,7 @@ class TodoListWidget extends StatefulWidget {
 
 class _TodoListWidgetState extends State<TodoListWidget>
     with TickerProviderStateMixin {
-  PagingController<DocumentSnapshot?, ActivitiesandStatusRecord>?
+  PagingController<DocumentSnapshot?, ActivitiesAndStatusRecord>?
       _pagingController;
   Query? _pagingQuery;
   List<StreamSubscription?> _streamSubscriptions = [];
@@ -139,16 +139,16 @@ class _TodoListWidgetState extends State<TodoListWidget>
                     Navigator.pop(context);
                   },
                   child: PagedListView<DocumentSnapshot<Object?>?,
-                      ActivitiesandStatusRecord>(
+                      ActivitiesAndStatusRecord>(
                     pagingController: () {
                       final Query<Object?> Function(Query<Object?>)
-                          queryBuilder = (activitiesandStatusRecord) =>
-                              activitiesandStatusRecord
+                          queryBuilder = (activitiesAndStatusRecord) =>
+                              activitiesAndStatusRecord
                                   .where('toDoState', isEqualTo: false)
                                   .orderBy('toDoDate');
                       if (_pagingController != null) {
                         final query =
-                            queryBuilder(ActivitiesandStatusRecord.collection);
+                            queryBuilder(ActivitiesAndStatusRecord.collection);
                         if (query != _pagingQuery) {
                           // The query has changed
                           _pagingQuery = query;
@@ -161,12 +161,12 @@ class _TodoListWidgetState extends State<TodoListWidget>
 
                       _pagingController = PagingController(firstPageKey: null);
                       _pagingQuery =
-                          queryBuilder(ActivitiesandStatusRecord.collection);
+                          queryBuilder(ActivitiesAndStatusRecord.collection);
                       _pagingController!
                           .addPageRequestListener((nextPageMarker) {
-                        queryActivitiesandStatusRecordPage(
-                          queryBuilder: (activitiesandStatusRecord) =>
-                              activitiesandStatusRecord
+                        queryActivitiesAndStatusRecordPage(
+                          queryBuilder: (activitiesAndStatusRecord) =>
+                              activitiesAndStatusRecord
                                   .where('toDoState', isEqualTo: false)
                                   .orderBy('toDoDate'),
                           nextPageMarker: nextPageMarker,
@@ -203,7 +203,7 @@ class _TodoListWidgetState extends State<TodoListWidget>
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     builderDelegate:
-                        PagedChildBuilderDelegate<ActivitiesandStatusRecord>(
+                        PagedChildBuilderDelegate<ActivitiesAndStatusRecord>(
                       // Customize what your widget looks like when it's loading the first page.
                       firstPageProgressIndicatorBuilder: (_) => Center(
                         child: SizedBox(
@@ -218,7 +218,7 @@ class _TodoListWidgetState extends State<TodoListWidget>
                         child: EmptyListValueWidget(),
                       ),
                       itemBuilder: (context, _, listViewIndex) {
-                        final listViewActivitiesandStatusRecord =
+                        final listViewActivitiesAndStatusRecord =
                             _pagingController!.itemList![listViewIndex];
                         return Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 8),
@@ -229,7 +229,7 @@ class _TodoListWidgetState extends State<TodoListWidget>
                                 MaterialPageRoute(
                                   builder: (context) => DetailsPageWidget(
                                     documentRefrence:
-                                        listViewActivitiesandStatusRecord
+                                        listViewActivitiesAndStatusRecord
                                             .reference,
                                   ),
                                 ),
@@ -264,7 +264,7 @@ class _TodoListWidgetState extends State<TodoListWidget>
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            listViewActivitiesandStatusRecord
+                                            listViewActivitiesAndStatusRecord
                                                 .toDoName!,
                                             style: FlutterFlowTheme.of(context)
                                                 .title2,
@@ -278,7 +278,7 @@ class _TodoListWidgetState extends State<TodoListWidget>
                                                 child: Text(
                                                   dateTimeFormat(
                                                       'MMMEd',
-                                                      listViewActivitiesandStatusRecord
+                                                      listViewActivitiesAndStatusRecord
                                                           .toDoDate!),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -291,7 +291,7 @@ class _TodoListWidgetState extends State<TodoListWidget>
                                                 child: Text(
                                                   dateTimeFormat(
                                                       'jm',
-                                                      listViewActivitiesandStatusRecord
+                                                      listViewActivitiesAndStatusRecord
                                                           .toDoDate!),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -344,7 +344,7 @@ class _TodoListWidgetState extends State<TodoListWidget>
                                               ) ??
                                               false;
                                       if (confirmDialogResponse) {
-                                        await listViewActivitiesandStatusRecord
+                                        await listViewActivitiesAndStatusRecord
                                             .reference
                                             .delete();
                                         await Navigator.push(
@@ -367,19 +367,19 @@ class _TodoListWidgetState extends State<TodoListWidget>
                                             0, 0, 12, 0),
                                         child: ToggleIcon(
                                           onPressed: () async {
-                                            final activitiesandStatusUpdateData =
+                                            final activitiesAndStatusUpdateData =
                                                 {
                                               'toDoState':
-                                                  !listViewActivitiesandStatusRecord
+                                                  !listViewActivitiesAndStatusRecord
                                                       .toDoState!,
                                             };
-                                            await listViewActivitiesandStatusRecord
+                                            await listViewActivitiesAndStatusRecord
                                                 .reference
                                                 .update(
-                                                    activitiesandStatusUpdateData);
+                                                    activitiesAndStatusUpdateData);
                                           },
                                           value:
-                                              listViewActivitiesandStatusRecord
+                                              listViewActivitiesAndStatusRecord
                                                   .toDoState!,
                                           onIcon: Icon(
                                             Icons.check_circle,

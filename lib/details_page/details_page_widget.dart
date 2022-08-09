@@ -26,8 +26,8 @@ class _DetailsPageWidgetState extends State<DetailsPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<ActivitiesandStatusRecord>(
-      stream: ActivitiesandStatusRecord.getDocument(widget.documentRefrence!),
+    return StreamBuilder<ActivitiesAndStatusRecord>(
+      stream: ActivitiesAndStatusRecord.getDocument(widget.documentRefrence!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -41,7 +41,7 @@ class _DetailsPageWidgetState extends State<DetailsPageWidget> {
             ),
           );
         }
-        final detailsPageActivitiesandStatusRecord = snapshot.data!;
+        final detailsPageActivitiesAndStatusRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           appBar: AppBar(
@@ -82,7 +82,7 @@ class _DetailsPageWidgetState extends State<DetailsPageWidget> {
                         padding: MediaQuery.of(context).viewInsets,
                         child: EditTaskWidget(
                           documentRefrence:
-                              detailsPageActivitiesandStatusRecord,
+                              detailsPageActivitiesAndStatusRecord,
                         ),
                       );
                     },
@@ -135,7 +135,7 @@ class _DetailsPageWidgetState extends State<DetailsPageWidget> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        detailsPageActivitiesandStatusRecord
+                                        detailsPageActivitiesAndStatusRecord
                                             .toDoName!,
                                         style:
                                             FlutterFlowTheme.of(context).title1,
@@ -152,7 +152,7 @@ class _DetailsPageWidgetState extends State<DetailsPageWidget> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        detailsPageActivitiesandStatusRecord
+                                        detailsPageActivitiesAndStatusRecord
                                             .toDoDescription!,
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2,
@@ -193,7 +193,7 @@ class _DetailsPageWidgetState extends State<DetailsPageWidget> {
                                     Text(
                                       dateTimeFormat(
                                           'MMMEd',
-                                          detailsPageActivitiesandStatusRecord
+                                          detailsPageActivitiesAndStatusRecord
                                               .toDoDate!),
                                       style:
                                           FlutterFlowTheme.of(context).title2,
@@ -204,7 +204,7 @@ class _DetailsPageWidgetState extends State<DetailsPageWidget> {
                                       child: Text(
                                         dateTimeFormat(
                                             'jm',
-                                            detailsPageActivitiesandStatusRecord
+                                            detailsPageActivitiesAndStatusRecord
                                                 .toDoDate!),
                                         style: FlutterFlowTheme.of(context)
                                             .title2
@@ -221,22 +221,22 @@ class _DetailsPageWidgetState extends State<DetailsPageWidget> {
                                   ],
                                 ),
                               ),
-                              if (!detailsPageActivitiesandStatusRecord
+                              if (!detailsPageActivitiesAndStatusRecord
                                   .toDoState!)
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 24),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      final activitiesandStatusUpdateData =
-                                          createActivitiesandStatusRecordData(
+                                      final activitiesAndStatusUpdateData =
+                                          createActivitiesAndStatusRecordData(
                                         toDoState: true,
                                         completedDate: getCurrentTimestamp,
                                       );
-                                      await detailsPageActivitiesandStatusRecord
+                                      await detailsPageActivitiesAndStatusRecord
                                           .reference
                                           .update(
-                                              activitiesandStatusUpdateData);
+                                              activitiesAndStatusUpdateData);
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(

@@ -4,12 +4,12 @@ import 'index.dart';
 import 'serializers.dart';
 import 'package:built_value/built_value.dart';
 
-part 'teamdata_record.g.dart';
+part 'team_data_record.g.dart';
 
-abstract class TeamdataRecord
-    implements Built<TeamdataRecord, TeamdataRecordBuilder> {
-  static Serializer<TeamdataRecord> get serializer =>
-      _$teamdataRecordSerializer;
+abstract class TeamDataRecord
+    implements Built<TeamDataRecord, TeamDataRecordBuilder> {
+  static Serializer<TeamDataRecord> get serializer =>
+      _$teamDataRecordSerializer;
 
   String? get experiment;
 
@@ -23,41 +23,41 @@ abstract class TeamdataRecord
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
-  static void _initializeBuilder(TeamdataRecordBuilder builder) => builder
+  static void _initializeBuilder(TeamDataRecordBuilder builder) => builder
     ..experiment = ''
     ..teamLeader = ''
     ..teamMember = ListBuilder()
     ..teamName = '';
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('teamdata');
+      FirebaseFirestore.instance.collection('teamData');
 
-  static Stream<TeamdataRecord> getDocument(DocumentReference ref) => ref
+  static Stream<TeamDataRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
       .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  static Future<TeamdataRecord> getDocumentOnce(DocumentReference ref) => ref
+  static Future<TeamDataRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
       .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  TeamdataRecord._();
-  factory TeamdataRecord([void Function(TeamdataRecordBuilder) updates]) =
-      _$TeamdataRecord;
+  TeamDataRecord._();
+  factory TeamDataRecord([void Function(TeamDataRecordBuilder) updates]) =
+      _$TeamDataRecord;
 
-  static TeamdataRecord getDocumentFromData(
+  static TeamDataRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
           {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
-Map<String, dynamic> createTeamdataRecordData({
+Map<String, dynamic> createTeamDataRecordData({
   String? experiment,
   String? teamLeader,
   String? teamName,
 }) {
   final firestoreData = serializers.toFirestore(
-    TeamdataRecord.serializer,
-    TeamdataRecord(
+    TeamDataRecord.serializer,
+    TeamDataRecord(
       (t) => t
         ..experiment = experiment
         ..teamLeader = teamLeader

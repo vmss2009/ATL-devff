@@ -68,7 +68,7 @@ class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
                     children: [
                       Expanded(
                         child: Text(
-                          'Team name',
+                          'Name',
                           style: FlutterFlowTheme.of(context).subtitle2,
                         ),
                       ),
@@ -91,7 +91,7 @@ class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
                     children: [
                       Expanded(
                         child: Text(
-                          'Team Leader',
+                          'Leader',
                           style: FlutterFlowTheme.of(context).subtitle2,
                         ),
                       ),
@@ -114,7 +114,7 @@ class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
                     children: [
                       Expanded(
                         child: Text(
-                          'Team Members',
+                          'Members',
                           style: FlutterFlowTheme.of(context).subtitle2,
                         ),
                       ),
@@ -137,7 +137,7 @@ class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
                     children: [
                       Expanded(
                         child: Text(
-                          'Current Experiment',
+                          'Current Tinkering Activity',
                           style: FlutterFlowTheme.of(context).subtitle2,
                         ),
                       ),

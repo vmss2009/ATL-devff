@@ -61,8 +61,8 @@ class _StudentReportPageWidgetState extends State<StudentReportPageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              StreamBuilder<List<StudentdataRecord>>(
-                stream: queryStudentdataRecord(),
+              StreamBuilder<List<StudentDataRecord>>(
+                stream: queryStudentDataRecord(),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -76,16 +76,16 @@ class _StudentReportPageWidgetState extends State<StudentReportPageWidget> {
                       ),
                     );
                   }
-                  List<StudentdataRecord> listViewStudentdataRecordList =
+                  List<StudentDataRecord> listViewStudentDataRecordList =
                       snapshot.data!;
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    itemCount: listViewStudentdataRecordList.length,
+                    itemCount: listViewStudentDataRecordList.length,
                     itemBuilder: (context, listViewIndex) {
-                      final listViewStudentdataRecord =
-                          listViewStudentdataRecordList[listViewIndex];
+                      final listViewStudentDataRecord =
+                          listViewStudentDataRecordList[listViewIndex];
                       return Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
                         child: InkWell(
@@ -96,20 +96,20 @@ class _StudentReportPageWidgetState extends State<StudentReportPageWidget> {
                                 builder: (context) =>
                                     MoreInformationStudentWidget(
                                   schoolName:
-                                      listViewStudentdataRecord.schoolName,
+                                      listViewStudentDataRecord.schoolName,
                                   studentName:
-                                      '${listViewStudentdataRecord.firstName} ${listViewStudentdataRecord.lastName}',
+                                      '${listViewStudentDataRecord.firstName} ${listViewStudentDataRecord.lastName}',
                                   studentClass:
-                                      listViewStudentdataRecord.studentClass,
-                                  email: listViewStudentdataRecord.email,
+                                      listViewStudentDataRecord.studentClass,
+                                  email: listViewStudentDataRecord.email,
                                   whatsappContact:
-                                      listViewStudentdataRecord.whatsappContact,
+                                      listViewStudentDataRecord.whatsappContact,
                                   aspiration:
-                                      listViewStudentdataRecord.aspiration,
+                                      listViewStudentDataRecord.aspiration,
                                   isLeader:
-                                      listViewStudentdataRecord.teamLeader,
+                                      listViewStudentDataRecord.teamLeader,
                                   curretTinkeringActivity:
-                                      listViewStudentdataRecord
+                                      listViewStudentDataRecord
                                           .currentTinkeringActivity,
                                 ),
                               ),
@@ -131,7 +131,7 @@ class _StudentReportPageWidgetState extends State<StudentReportPageWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     AutoSizeText(
-                                      '${listViewStudentdataRecord.firstName} ${listViewStudentdataRecord.lastName}'
+                                      '${listViewStudentDataRecord.firstName} ${listViewStudentDataRecord.lastName}'
                                           .maybeHandleOverflow(
                                         maxChars: 10,
                                         replacement: '…',
@@ -159,32 +159,32 @@ class _StudentReportPageWidgetState extends State<StudentReportPageWidget> {
                                               builder: (context) =>
                                                   StudentFormeeditpageWidget(
                                                 schoolName:
-                                                    listViewStudentdataRecord
+                                                    listViewStudentDataRecord
                                                         .schoolName,
                                                 firstName:
-                                                    listViewStudentdataRecord
+                                                    listViewStudentDataRecord
                                                         .firstName,
                                                 lastName:
-                                                    listViewStudentdataRecord
+                                                    listViewStudentDataRecord
                                                         .lastName,
                                                 studentClass:
-                                                    listViewStudentdataRecord
+                                                    listViewStudentDataRecord
                                                         .studentClass,
                                                 email: currentUserEmail,
                                                 whatsappContact:
-                                                    listViewStudentdataRecord
+                                                    listViewStudentDataRecord
                                                         .whatsappContact,
                                                 aspiration:
-                                                    listViewStudentdataRecord
+                                                    listViewStudentDataRecord
                                                         .aspiration,
                                                 isLeader:
-                                                    listViewStudentdataRecord
+                                                    listViewStudentDataRecord
                                                         .teamLeader,
                                                 currentTinkeringActivity:
-                                                    listViewStudentdataRecord
+                                                    listViewStudentDataRecord
                                                         .currentTinkeringActivity,
                                                 documentRefrence:
-                                                    listViewStudentdataRecord
+                                                    listViewStudentDataRecord
                                                         .reference,
                                               ),
                                             ),
@@ -234,7 +234,7 @@ class _StudentReportPageWidgetState extends State<StudentReportPageWidget> {
                                                 ) ??
                                                 false;
                                         if (confirmDialogResponse) {
-                                          await listViewStudentdataRecord
+                                          await listViewStudentDataRecord
                                               .reference
                                               .delete();
                                         }
@@ -243,7 +243,7 @@ class _StudentReportPageWidgetState extends State<StudentReportPageWidget> {
                                   ],
                                 ),
                                 Text(
-                                  'Current Tinkering Activity : ${listViewStudentdataRecord.currentTinkeringActivity}',
+                                  'Current Tinkering Activity : ${listViewStudentDataRecord.currentTinkeringActivity}',
                                   style: FlutterFlowTheme.of(context)
                                       .title3
                                       .override(
@@ -253,7 +253,7 @@ class _StudentReportPageWidgetState extends State<StudentReportPageWidget> {
                                       ),
                                 ),
                                 Text(
-                                  'Team Leader : ${functions.convertbooltostring(listViewStudentdataRecord.teamLeader)}',
+                                  'Team Leader : ${functions.convertbooltostring(listViewStudentDataRecord.teamLeader)}',
                                   style: FlutterFlowTheme.of(context)
                                       .title3
                                       .override(

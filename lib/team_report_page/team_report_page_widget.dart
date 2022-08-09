@@ -59,8 +59,8 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              StreamBuilder<List<TeamdataRecord>>(
-                stream: queryTeamdataRecord(),
+              StreamBuilder<List<TeamDataRecord>>(
+                stream: queryTeamDataRecord(),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -74,16 +74,16 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
                       ),
                     );
                   }
-                  List<TeamdataRecord> listViewTeamdataRecordList =
+                  List<TeamDataRecord> listViewTeamDataRecordList =
                       snapshot.data!;
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    itemCount: listViewTeamdataRecordList.length,
+                    itemCount: listViewTeamDataRecordList.length,
                     itemBuilder: (context, listViewIndex) {
-                      final listViewTeamdataRecord =
-                          listViewTeamdataRecordList[listViewIndex];
+                      final listViewTeamDataRecord =
+                          listViewTeamDataRecordList[listViewIndex];
                       return Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
                         child: InkWell(
@@ -92,13 +92,13 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => MoreInformationTeamWidget(
-                                  teamName: listViewTeamdataRecord.teamName,
-                                  teamLeader: listViewTeamdataRecord.teamLeader,
+                                  teamName: listViewTeamDataRecord.teamName,
+                                  teamLeader: listViewTeamDataRecord.teamLeader,
                                   currentExperiment:
-                                      listViewTeamdataRecord.experiment,
+                                      listViewTeamDataRecord.experiment,
                                   teamMembers:
                                       functions.returnTeamMembersInStringFormat(
-                                          listViewTeamdataRecord.teamMember!
+                                          listViewTeamDataRecord.teamMember!
                                               .toList()),
                                 ),
                               ),
@@ -120,7 +120,7 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     AutoSizeText(
-                                      listViewTeamdataRecord.teamName!
+                                      listViewTeamDataRecord.teamName!
                                           .maybeHandleOverflow(
                                         maxChars: 10,
                                         replacement: '…',
@@ -147,16 +147,16 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
                                             MaterialPageRoute(
                                               builder: (context) =>
                                                   TeamformEditPageWidget(
-                                                teamName: listViewTeamdataRecord
+                                                teamName: listViewTeamDataRecord
                                                     .teamName,
                                                 teamLeader:
-                                                    listViewTeamdataRecord
+                                                    listViewTeamDataRecord
                                                         .teamLeader,
                                                 currentExperiment:
-                                                    listViewTeamdataRecord
+                                                    listViewTeamDataRecord
                                                         .experiment,
                                                 documentRefrence:
-                                                    listViewTeamdataRecord
+                                                    listViewTeamDataRecord
                                                         .reference,
                                               ),
                                             ),
@@ -206,7 +206,7 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
                                                 ) ??
                                                 false;
                                         if (confirmDialogResponse) {
-                                          await listViewTeamdataRecord.reference
+                                          await listViewTeamDataRecord.reference
                                               .delete();
                                         }
                                       },
@@ -214,7 +214,7 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
                                   ],
                                 ),
                                 Text(
-                                  'Current Experiment : ${listViewTeamdataRecord.experiment}',
+                                  'Current Tinkering Activity : ${listViewTeamDataRecord.experiment}',
                                   style: FlutterFlowTheme.of(context)
                                       .title3
                                       .override(
@@ -224,7 +224,7 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
                                       ),
                                 ),
                                 Text(
-                                  'Team Leader : ${listViewTeamdataRecord.teamLeader}',
+                                  'Leader : ${listViewTeamDataRecord.teamLeader}',
                                   style: FlutterFlowTheme.of(context)
                                       .title3
                                       .override(
