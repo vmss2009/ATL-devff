@@ -461,7 +461,7 @@ class _TeamFormPageWidgetState extends State<TeamFormPageWidget> {
                               context: context,
                               builder: (alertDialogContext) {
                                 return AlertDialog(
-                                  title: Text('School Added Successfully'),
+                                  title: Text('Team Added Successfully'),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>

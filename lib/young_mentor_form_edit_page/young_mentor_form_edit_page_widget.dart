@@ -670,7 +670,8 @@ class _YoungMentorFormEditPageWidgetState
                               context: context,
                               builder: (alertDialogContext) {
                                 return AlertDialog(
-                                  title: Text('School Updated Successfully'),
+                                  title:
+                                      Text('Young Mentor Updated Successfully'),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>

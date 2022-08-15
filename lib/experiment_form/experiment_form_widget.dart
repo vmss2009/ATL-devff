@@ -389,16 +389,15 @@ class _ExperimentFormWidgetState extends State<ExperimentFormWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 5),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            final experimentDataCreateData = {
-                              ...createExperimentDataRecordData(
-                                experimentName: textController3!.text,
-                                aim: textController2!.text,
-                                procedure: textController4!.text,
-                                observation: textController5!.text,
-                                result: textController6!.text,
-                              ),
-                              'appartus': ['1'],
-                            };
+                            final experimentDataCreateData =
+                                createExperimentDataRecordData(
+                              experimentName: textController3!.text,
+                              aim: textController2!.text,
+                              procedure: textController4!.text,
+                              observation: textController5!.text,
+                              result: textController6!.text,
+                              appartus: textController3!.text,
+                            );
                             await ExperimentDataRecord.collection
                                 .doc()
                                 .set(experimentDataCreateData);

@@ -21,7 +21,7 @@ abstract class ExperimentDataRecord
 
   String? get result;
 
-  BuiltList<String>? get appartus;
+  String? get appartus;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
@@ -33,7 +33,7 @@ abstract class ExperimentDataRecord
     ..procedure = ''
     ..observation = ''
     ..result = ''
-    ..appartus = ListBuilder();
+    ..appartus = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('experimentData');
@@ -63,6 +63,7 @@ Map<String, dynamic> createExperimentDataRecordData({
   String? procedure,
   String? observation,
   String? result,
+  String? appartus,
 }) {
   final firestoreData = serializers.toFirestore(
     ExperimentDataRecord.serializer,
@@ -73,7 +74,7 @@ Map<String, dynamic> createExperimentDataRecordData({
         ..procedure = procedure
         ..observation = observation
         ..result = result
-        ..appartus = null,
+        ..appartus = appartus,
     ),
   );
 

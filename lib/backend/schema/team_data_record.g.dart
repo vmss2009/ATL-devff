@@ -21,6 +21,13 @@ class _$TeamDataRecordSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
+    value = object.experiment;
+    if (value != null) {
+      result
+        ..add('experiment')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.teamLeader;
     if (value != null) {
       result
@@ -42,14 +49,6 @@ class _$TeamDataRecordSerializer
         ..add('teamName')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
-    }
-    value = object.experiment;
-    if (value != null) {
-      result
-        ..add('experiment')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.ffRef;
     if (value != null) {
@@ -74,6 +73,10 @@ class _$TeamDataRecordSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
+        case 'experiment':
+          result.experiment = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'teamLeader':
           result.teamLeader = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -87,12 +90,6 @@ class _$TeamDataRecordSerializer
         case 'teamName':
           result.teamName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
-          break;
-        case 'experiment':
-          result.experiment = serializers.deserialize(value,
-              specifiedType: const FullType(DocumentReference, const [
-                const FullType.nullable(Object)
-              ])) as DocumentReference<Object?>?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -109,13 +106,13 @@ class _$TeamDataRecordSerializer
 
 class _$TeamDataRecord extends TeamDataRecord {
   @override
+  final String? experiment;
+  @override
   final String? teamLeader;
   @override
   final BuiltList<String>? teamMember;
   @override
   final String? teamName;
-  @override
-  final DocumentReference<Object?>? experiment;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -123,10 +120,10 @@ class _$TeamDataRecord extends TeamDataRecord {
       (new TeamDataRecordBuilder()..update(updates))._build();
 
   _$TeamDataRecord._(
-      {this.teamLeader,
+      {this.experiment,
+      this.teamLeader,
       this.teamMember,
       this.teamName,
-      this.experiment,
       this.ffRef})
       : super._();
 
@@ -142,10 +139,10 @@ class _$TeamDataRecord extends TeamDataRecord {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is TeamDataRecord &&
+        experiment == other.experiment &&
         teamLeader == other.teamLeader &&
         teamMember == other.teamMember &&
         teamName == other.teamName &&
-        experiment == other.experiment &&
         ffRef == other.ffRef;
   }
 
@@ -153,19 +150,19 @@ class _$TeamDataRecord extends TeamDataRecord {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, teamLeader.hashCode), teamMember.hashCode),
-                teamName.hashCode),
-            experiment.hashCode),
+            $jc($jc($jc(0, experiment.hashCode), teamLeader.hashCode),
+                teamMember.hashCode),
+            teamName.hashCode),
         ffRef.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'TeamDataRecord')
+          ..add('experiment', experiment)
           ..add('teamLeader', teamLeader)
           ..add('teamMember', teamMember)
           ..add('teamName', teamName)
-          ..add('experiment', experiment)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -174,6 +171,10 @@ class _$TeamDataRecord extends TeamDataRecord {
 class TeamDataRecordBuilder
     implements Builder<TeamDataRecord, TeamDataRecordBuilder> {
   _$TeamDataRecord? _$v;
+
+  String? _experiment;
+  String? get experiment => _$this._experiment;
+  set experiment(String? experiment) => _$this._experiment = experiment;
 
   String? _teamLeader;
   String? get teamLeader => _$this._teamLeader;
@@ -189,11 +190,6 @@ class TeamDataRecordBuilder
   String? get teamName => _$this._teamName;
   set teamName(String? teamName) => _$this._teamName = teamName;
 
-  DocumentReference<Object?>? _experiment;
-  DocumentReference<Object?>? get experiment => _$this._experiment;
-  set experiment(DocumentReference<Object?>? experiment) =>
-      _$this._experiment = experiment;
-
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -205,10 +201,10 @@ class TeamDataRecordBuilder
   TeamDataRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _experiment = $v.experiment;
       _teamLeader = $v.teamLeader;
       _teamMember = $v.teamMember?.toBuilder();
       _teamName = $v.teamName;
-      _experiment = $v.experiment;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -234,10 +230,10 @@ class TeamDataRecordBuilder
     try {
       _$result = _$v ??
           new _$TeamDataRecord._(
+              experiment: experiment,
               teamLeader: teamLeader,
               teamMember: _teamMember?.build(),
               teamName: teamName,
-              experiment: experiment,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;

@@ -17,12 +17,3 @@ String convertbooltostring(bool? text) {
 String returnTeamMembersInStringFormat(List<String> teamMembers) {
   return teamMembers.join(", ");
 }
-
-String returnAppartusinListFormat(List<String> appartus) {
-  var appartuss = appartus;
-  for (var i = 0; i < appartuss.length; i++) {
-    appartuss.indexOf("$i.) ${appartus[i]} \n", i);
-    print(appartuss);
-  }
-  return "$appartuss";
-}

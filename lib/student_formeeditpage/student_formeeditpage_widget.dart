@@ -614,7 +614,7 @@ class _StudentFormeeditpageWidgetState
                               context: context,
                               builder: (alertDialogContext) {
                                 return AlertDialog(
-                                  title: Text('School Updated Successfully'),
+                                  title: Text('Student Updated Successfully'),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>
@@ -625,7 +625,6 @@ class _StudentFormeeditpageWidgetState
                                 );
                               },
                             );
-                            Navigator.pop(context);
                           },
                           text: 'Update',
                           options: FFButtonOptions(

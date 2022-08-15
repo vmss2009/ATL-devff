@@ -581,7 +581,7 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                               context: context,
                               builder: (alertDialogContext) {
                                 return AlertDialog(
-                                  title: Text('School Added Successfully'),
+                                  title: Text('Student Added Successfully'),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>

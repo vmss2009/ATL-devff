@@ -1,4 +1,5 @@
 import '../backend/backend.dart';
+import '../experiment_form_edit/experiment_form_edit_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -149,8 +150,18 @@ class _ExperimentReportWidgetState extends State<ExperimentReportWidget> {
                                                       .primaryText,
                                               size: 30,
                                             ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
+                                            onPressed: () async {
+                                              await Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ExperimentFormEditWidget(
+                                                    documentRefrence:
+                                                        listViewExperimentDataRecord
+                                                            .reference,
+                                                  ),
+                                                ),
+                                              );
                                             },
                                           ),
                                         ),

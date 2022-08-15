@@ -81,6 +81,13 @@ class _$YoungMentorDataRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.youngMentorCurrentExperiment;
+    if (value != null) {
+      result
+        ..add('youngMentorCurrentExperiment')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.youngMentorCompetitionMapped;
     if (value != null) {
       result
@@ -94,14 +101,6 @@ class _$YoungMentorDataRecordSerializer
         ..add('youngMentorAspiration')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
-    }
-    value = object.youngMentorCurrentExperiment;
-    if (value != null) {
-      result
-        ..add('youngMentorCurrentExperiment')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.ffRef;
     if (value != null) {
@@ -158,6 +157,10 @@ class _$YoungMentorDataRecordSerializer
           result.youngMentorWhatsappContact = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'youngMentorCurrentExperiment':
+          result.youngMentorCurrentExperiment = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'youngMentorCompetitionMapped':
           result.youngMentorCompetitionMapped = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -165,12 +168,6 @@ class _$YoungMentorDataRecordSerializer
         case 'youngMentorAspiration':
           result.youngMentorAspiration = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
-          break;
-        case 'youngMentorCurrentExperiment':
-          result.youngMentorCurrentExperiment = serializers.deserialize(value,
-              specifiedType: const FullType(DocumentReference, const [
-                const FullType.nullable(Object)
-              ])) as DocumentReference<Object?>?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -203,11 +200,11 @@ class _$YoungMentorDataRecord extends YoungMentorDataRecord {
   @override
   final String? youngMentorWhatsappContact;
   @override
+  final String? youngMentorCurrentExperiment;
+  @override
   final String? youngMentorCompetitionMapped;
   @override
   final String? youngMentorAspiration;
-  @override
-  final DocumentReference<Object?>? youngMentorCurrentExperiment;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -224,9 +221,9 @@ class _$YoungMentorDataRecord extends YoungMentorDataRecord {
       this.youngMentorYear,
       this.youngMentorEmail,
       this.youngMentorWhatsappContact,
+      this.youngMentorCurrentExperiment,
       this.youngMentorCompetitionMapped,
       this.youngMentorAspiration,
-      this.youngMentorCurrentExperiment,
       this.ffRef})
       : super._();
 
@@ -251,9 +248,9 @@ class _$YoungMentorDataRecord extends YoungMentorDataRecord {
         youngMentorYear == other.youngMentorYear &&
         youngMentorEmail == other.youngMentorEmail &&
         youngMentorWhatsappContact == other.youngMentorWhatsappContact &&
+        youngMentorCurrentExperiment == other.youngMentorCurrentExperiment &&
         youngMentorCompetitionMapped == other.youngMentorCompetitionMapped &&
         youngMentorAspiration == other.youngMentorAspiration &&
-        youngMentorCurrentExperiment == other.youngMentorCurrentExperiment &&
         ffRef == other.ffRef;
   }
 
@@ -281,9 +278,9 @@ class _$YoungMentorDataRecord extends YoungMentorDataRecord {
                                 youngMentorYear.hashCode),
                             youngMentorEmail.hashCode),
                         youngMentorWhatsappContact.hashCode),
-                    youngMentorCompetitionMapped.hashCode),
-                youngMentorAspiration.hashCode),
-            youngMentorCurrentExperiment.hashCode),
+                    youngMentorCurrentExperiment.hashCode),
+                youngMentorCompetitionMapped.hashCode),
+            youngMentorAspiration.hashCode),
         ffRef.hashCode));
   }
 
@@ -298,9 +295,9 @@ class _$YoungMentorDataRecord extends YoungMentorDataRecord {
           ..add('youngMentorYear', youngMentorYear)
           ..add('youngMentorEmail', youngMentorEmail)
           ..add('youngMentorWhatsappContact', youngMentorWhatsappContact)
+          ..add('youngMentorCurrentExperiment', youngMentorCurrentExperiment)
           ..add('youngMentorCompetitionMapped', youngMentorCompetitionMapped)
           ..add('youngMentorAspiration', youngMentorAspiration)
-          ..add('youngMentorCurrentExperiment', youngMentorCurrentExperiment)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -350,6 +347,12 @@ class YoungMentorDataRecordBuilder
   set youngMentorWhatsappContact(String? youngMentorWhatsappContact) =>
       _$this._youngMentorWhatsappContact = youngMentorWhatsappContact;
 
+  String? _youngMentorCurrentExperiment;
+  String? get youngMentorCurrentExperiment =>
+      _$this._youngMentorCurrentExperiment;
+  set youngMentorCurrentExperiment(String? youngMentorCurrentExperiment) =>
+      _$this._youngMentorCurrentExperiment = youngMentorCurrentExperiment;
+
   String? _youngMentorCompetitionMapped;
   String? get youngMentorCompetitionMapped =>
       _$this._youngMentorCompetitionMapped;
@@ -360,13 +363,6 @@ class YoungMentorDataRecordBuilder
   String? get youngMentorAspiration => _$this._youngMentorAspiration;
   set youngMentorAspiration(String? youngMentorAspiration) =>
       _$this._youngMentorAspiration = youngMentorAspiration;
-
-  DocumentReference<Object?>? _youngMentorCurrentExperiment;
-  DocumentReference<Object?>? get youngMentorCurrentExperiment =>
-      _$this._youngMentorCurrentExperiment;
-  set youngMentorCurrentExperiment(
-          DocumentReference<Object?>? youngMentorCurrentExperiment) =>
-      _$this._youngMentorCurrentExperiment = youngMentorCurrentExperiment;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -387,9 +383,9 @@ class YoungMentorDataRecordBuilder
       _youngMentorYear = $v.youngMentorYear;
       _youngMentorEmail = $v.youngMentorEmail;
       _youngMentorWhatsappContact = $v.youngMentorWhatsappContact;
+      _youngMentorCurrentExperiment = $v.youngMentorCurrentExperiment;
       _youngMentorCompetitionMapped = $v.youngMentorCompetitionMapped;
       _youngMentorAspiration = $v.youngMentorAspiration;
-      _youngMentorCurrentExperiment = $v.youngMentorCurrentExperiment;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -421,9 +417,9 @@ class YoungMentorDataRecordBuilder
             youngMentorYear: youngMentorYear,
             youngMentorEmail: youngMentorEmail,
             youngMentorWhatsappContact: youngMentorWhatsappContact,
+            youngMentorCurrentExperiment: youngMentorCurrentExperiment,
             youngMentorCompetitionMapped: youngMentorCompetitionMapped,
             youngMentorAspiration: youngMentorAspiration,
-            youngMentorCurrentExperiment: youngMentorCurrentExperiment,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

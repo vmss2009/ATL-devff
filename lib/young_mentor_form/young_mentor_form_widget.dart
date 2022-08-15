@@ -654,7 +654,8 @@ class _YoungMentorFormWidgetState extends State<YoungMentorFormWidget> {
                               context: context,
                               builder: (alertDialogContext) {
                                 return AlertDialog(
-                                  title: Text('School Added Successfully'),
+                                  title:
+                                      Text('Young Mentor Added Successfully'),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>

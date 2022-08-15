@@ -65,8 +65,7 @@ class _$ExperimentDataRecordSerializer
       result
         ..add('appartus')
         ..add(serializers.serialize(value,
-            specifiedType:
-                const FullType(BuiltList, const [const FullType(String)])));
+            specifiedType: const FullType(String)));
     }
     value = object.ffRef;
     if (value != null) {
@@ -112,10 +111,8 @@ class _$ExperimentDataRecordSerializer
               specifiedType: const FullType(String)) as String?;
           break;
         case 'appartus':
-          result.appartus.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(String)]))!
-              as BuiltList<Object?>);
+          result.appartus = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -142,7 +139,7 @@ class _$ExperimentDataRecord extends ExperimentDataRecord {
   @override
   final String? result;
   @override
-  final BuiltList<String>? appartus;
+  final String? appartus;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -235,10 +232,9 @@ class ExperimentDataRecordBuilder
   String? get result => _$this._result;
   set result(String? result) => _$this._result = result;
 
-  ListBuilder<String>? _appartus;
-  ListBuilder<String> get appartus =>
-      _$this._appartus ??= new ListBuilder<String>();
-  set appartus(ListBuilder<String>? appartus) => _$this._appartus = appartus;
+  String? _appartus;
+  String? get appartus => _$this._appartus;
+  set appartus(String? appartus) => _$this._appartus = appartus;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -256,7 +252,7 @@ class ExperimentDataRecordBuilder
       _procedure = $v.procedure;
       _observation = $v.observation;
       _result = $v.result;
-      _appartus = $v.appartus?.toBuilder();
+      _appartus = $v.appartus;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -278,28 +274,15 @@ class ExperimentDataRecordBuilder
   ExperimentDataRecord build() => _build();
 
   _$ExperimentDataRecord _build() {
-    _$ExperimentDataRecord _$result;
-    try {
-      _$result = _$v ??
-          new _$ExperimentDataRecord._(
-              experimentName: experimentName,
-              aim: aim,
-              procedure: procedure,
-              observation: observation,
-              result: result,
-              appartus: _appartus?.build(),
-              ffRef: ffRef);
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'appartus';
-        _appartus?.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'ExperimentDataRecord', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ??
+        new _$ExperimentDataRecord._(
+            experimentName: experimentName,
+            aim: aim,
+            procedure: procedure,
+            observation: observation,
+            result: result,
+            appartus: appartus,
+            ffRef: ffRef);
     replace(_$result);
     return _$result;
   }

@@ -377,7 +377,7 @@ class _TeamformEditPageWidgetState extends State<TeamformEditPageWidget> {
                               context: context,
                               builder: (alertDialogContext) {
                                 return AlertDialog(
-                                  title: Text('School Updated Successfully'),
+                                  title: Text('Team Updated Successfully'),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>
