@@ -9,10 +9,14 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ActivitiesAndStatusRecord.serializer)
       ..add(AtlUsersRecord.serializer)
+      ..add(ExperimentDataRecord.serializer)
       ..add(SchoolDataRecord.serializer)
       ..add(StudentDataRecord.serializer)
       ..add(TeamDataRecord.serializer)
       ..add(YoungMentorDataRecord.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

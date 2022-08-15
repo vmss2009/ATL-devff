@@ -2,21 +2,19 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../more_information_young_mentor/more_information_young_mentor_widget.dart';
-import '../young_mentor_form_edit_page/young_mentor_form_edit_page_widget.dart';
+import '../more_information_experiment/more_information_experiment_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class YoungMentorReportWidget extends StatefulWidget {
-  const YoungMentorReportWidget({Key? key}) : super(key: key);
+class ExperimentReportWidget extends StatefulWidget {
+  const ExperimentReportWidget({Key? key}) : super(key: key);
 
   @override
-  _YoungMentorReportWidgetState createState() =>
-      _YoungMentorReportWidgetState();
+  _ExperimentReportWidgetState createState() => _ExperimentReportWidgetState();
 }
 
-class _YoungMentorReportWidgetState extends State<YoungMentorReportWidget> {
+class _ExperimentReportWidgetState extends State<ExperimentReportWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -29,7 +27,7 @@ class _YoungMentorReportWidgetState extends State<YoungMentorReportWidget> {
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'youngMentorReport',
+        title: 'experimentReport',
         color: FlutterFlowTheme.of(context).primaryColor,
         child: Scaffold(
           key: scaffoldKey,
@@ -51,7 +49,7 @@ class _YoungMentorReportWidgetState extends State<YoungMentorReportWidget> {
               },
             ),
             title: Text(
-              'Young Mentor Report',
+              'Experiment Report',
               style: FlutterFlowTheme.of(context).title2.override(
                     fontFamily: FlutterFlowTheme.of(context).title2Family,
                     color: Colors.white,
@@ -69,8 +67,8 @@ class _YoungMentorReportWidgetState extends State<YoungMentorReportWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  StreamBuilder<List<YoungMentorDataRecord>>(
-                    stream: queryYoungMentorDataRecord(),
+                  StreamBuilder<List<ExperimentDataRecord>>(
+                    stream: queryExperimentDataRecord(),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -84,16 +82,16 @@ class _YoungMentorReportWidgetState extends State<YoungMentorReportWidget> {
                           ),
                         );
                       }
-                      List<YoungMentorDataRecord>
-                          listViewYoungMentorDataRecordList = snapshot.data!;
+                      List<ExperimentDataRecord>
+                          listViewExperimentDataRecordList = snapshot.data!;
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
-                        itemCount: listViewYoungMentorDataRecordList.length,
+                        itemCount: listViewExperimentDataRecordList.length,
                         itemBuilder: (context, listViewIndex) {
-                          final listViewYoungMentorDataRecord =
-                              listViewYoungMentorDataRecordList[listViewIndex];
+                          final listViewExperimentDataRecord =
+                              listViewExperimentDataRecordList[listViewIndex];
                           return Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
@@ -103,9 +101,9 @@ class _YoungMentorReportWidgetState extends State<YoungMentorReportWidget> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        MoreInformationYoungMentorWidget(
+                                        MoreInformationExperimentWidget(
                                       documentRefrence:
-                                          listViewYoungMentorDataRecord,
+                                          listViewExperimentDataRecord,
                                     ),
                                   ),
                                 );
@@ -128,7 +126,8 @@ class _YoungMentorReportWidgetState extends State<YoungMentorReportWidget> {
                                           CrossAxisAlignment.center,
                                       children: [
                                         AutoSizeText(
-                                          '${listViewYoungMentorDataRecord.youngMentorFirstName} ${listViewYoungMentorDataRecord.youngMentorLastName}'
+                                          listViewExperimentDataRecord
+                                              .experimentName!
                                               .maybeHandleOverflow(
                                             maxChars: 10,
                                             replacement: '…',
@@ -150,17 +149,8 @@ class _YoungMentorReportWidgetState extends State<YoungMentorReportWidget> {
                                                       .primaryText,
                                               size: 30,
                                             ),
-                                            onPressed: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      YoungMentorFormEditPageWidget(
-                                                    documentRefrence:
-                                                        listViewYoungMentorDataRecord,
-                                                  ),
-                                                ),
-                                              );
+                                            onPressed: () {
+                                              print('IconButton pressed ...');
                                             },
                                           ),
                                         ),
@@ -207,7 +197,7 @@ class _YoungMentorReportWidgetState extends State<YoungMentorReportWidget> {
                                                     ) ??
                                                     false;
                                             if (confirmDialogResponse) {
-                                              await listViewYoungMentorDataRecord
+                                              await listViewExperimentDataRecord
                                                   .reference
                                                   .delete();
                                             }
@@ -216,7 +206,7 @@ class _YoungMentorReportWidgetState extends State<YoungMentorReportWidget> {
                                       ],
                                     ),
                                     Text(
-                                      'Current Tinkering Activity : ${listViewYoungMentorDataRecord.youngMentorCurrentExperiment}',
+                                      'Aim : ${listViewExperimentDataRecord.aim}',
                                       style: FlutterFlowTheme.of(context)
                                           .title3
                                           .override(
@@ -227,7 +217,7 @@ class _YoungMentorReportWidgetState extends State<YoungMentorReportWidget> {
                                           ),
                                     ),
                                     Text(
-                                      'Study : ${listViewYoungMentorDataRecord.youngMentorStudy}',
+                                      'Result : ${listViewExperimentDataRecord.result}',
                                       style: FlutterFlowTheme.of(context)
                                           .title3
                                           .override(

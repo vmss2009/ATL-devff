@@ -10,6 +10,7 @@ import 'schema/school_data_record.dart';
 import 'schema/student_data_record.dart';
 import 'schema/team_data_record.dart';
 import 'schema/young_mentor_data_record.dart';
+import 'schema/experiment_data_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -23,6 +24,7 @@ export 'schema/school_data_record.dart';
 export 'schema/student_data_record.dart';
 export 'schema/team_data_record.dart';
 export 'schema/young_mentor_data_record.dart';
+export 'schema/experiment_data_record.dart';
 
 /// Functions to query ActivitiesAndStatusRecords (as a Stream and as a Future).
 Stream<List<ActivitiesAndStatusRecord>> queryActivitiesAndStatusRecord({
@@ -271,6 +273,48 @@ Future<FFFirestorePage<YoungMentorDataRecord>> queryYoungMentorDataRecordPage({
     queryCollectionPage(
       YoungMentorDataRecord.collection,
       YoungMentorDataRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query ExperimentDataRecords (as a Stream and as a Future).
+Stream<List<ExperimentDataRecord>> queryExperimentDataRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ExperimentDataRecord.collection,
+      ExperimentDataRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ExperimentDataRecord>> queryExperimentDataRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ExperimentDataRecord.collection,
+      ExperimentDataRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<ExperimentDataRecord>> queryExperimentDataRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      ExperimentDataRecord.collection,
+      ExperimentDataRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

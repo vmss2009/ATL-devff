@@ -1,29 +1,25 @@
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MoreInformationTeamWidget extends StatefulWidget {
-  const MoreInformationTeamWidget({
+class MoreInformationExperimentWidget extends StatefulWidget {
+  const MoreInformationExperimentWidget({
     Key? key,
-    this.teamName,
-    this.teamLeader,
-    this.teamMembers,
-    this.currentExperiment,
+    this.documentRefrence,
   }) : super(key: key);
 
-  final String? teamName;
-  final String? teamLeader;
-  final String? teamMembers;
-  final String? currentExperiment;
+  final ExperimentDataRecord? documentRefrence;
 
   @override
-  _MoreInformationTeamWidgetState createState() =>
-      _MoreInformationTeamWidgetState();
+  _MoreInformationExperimentWidgetState createState() =>
+      _MoreInformationExperimentWidgetState();
 }
 
-class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
+class _MoreInformationExperimentWidgetState
+    extends State<MoreInformationExperimentWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -36,7 +32,7 @@ class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'moreInformationTeam',
+        title: 'moreInformationExperiment',
         color: FlutterFlowTheme.of(context).primaryColor,
         child: Scaffold(
           key: scaffoldKey,
@@ -86,7 +82,7 @@ class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
                             child: Align(
                               alignment: AlignmentDirectional(-0.5, 0),
                               child: Text(
-                                widget.teamName!,
+                                widget.documentRefrence!.experimentName!,
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                             ),
@@ -101,7 +97,7 @@ class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
                         children: [
                           Expanded(
                             child: Text(
-                              'Leader',
+                              'Aim',
                               style: FlutterFlowTheme.of(context).subtitle2,
                             ),
                           ),
@@ -109,7 +105,7 @@ class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
                             child: Align(
                               alignment: AlignmentDirectional(-0.5, 0),
                               child: Text(
-                                widget.teamLeader!,
+                                widget.documentRefrence!.aim!,
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                             ),
@@ -124,7 +120,7 @@ class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
                         children: [
                           Expanded(
                             child: Text(
-                              'Members',
+                              'Appartus',
                               style: FlutterFlowTheme.of(context).subtitle2,
                             ),
                           ),
@@ -132,7 +128,7 @@ class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
                             child: Align(
                               alignment: AlignmentDirectional(-0.7, 0),
                               child: Text(
-                                widget.teamMembers!,
+                                'School Address',
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                             ),
@@ -147,7 +143,7 @@ class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
                         children: [
                           Expanded(
                             child: Text(
-                              'Current Tinkering Activity',
+                              'Procedure',
                               style: FlutterFlowTheme.of(context).subtitle2,
                             ),
                           ),
@@ -155,7 +151,53 @@ class _MoreInformationTeamWidgetState extends State<MoreInformationTeamWidget> {
                             child: Align(
                               alignment: AlignmentDirectional(-0.7, 0),
                               child: Text(
-                                widget.currentExperiment!,
+                                widget.documentRefrence!.procedure!,
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Observation',
+                              style: FlutterFlowTheme.of(context).subtitle2,
+                            ),
+                          ),
+                          Expanded(
+                            child: Align(
+                              alignment: AlignmentDirectional(-0.7, 0),
+                              child: Text(
+                                widget.documentRefrence!.observation!,
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Result',
+                              style: FlutterFlowTheme.of(context).subtitle2,
+                            ),
+                          ),
+                          Expanded(
+                            child: Align(
+                              alignment: AlignmentDirectional(-0.7, 0),
+                              child: Text(
+                                widget.documentRefrence!.result!,
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                             ),

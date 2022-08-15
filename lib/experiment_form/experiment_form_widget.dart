@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -9,23 +8,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class StudentFormPageWidget extends StatefulWidget {
-  const StudentFormPageWidget({Key? key}) : super(key: key);
+class ExperimentFormWidget extends StatefulWidget {
+  const ExperimentFormWidget({Key? key}) : super(key: key);
 
   @override
-  _StudentFormPageWidgetState createState() => _StudentFormPageWidgetState();
+  _ExperimentFormWidgetState createState() => _ExperimentFormWidgetState();
 }
 
-class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
-  String? dropDownValue1;
+class _ExperimentFormWidgetState extends State<ExperimentFormWidget> {
   TextEditingController? textController1;
   TextEditingController? textController2;
-  String? dropDownValue2;
   TextEditingController? textController3;
   TextEditingController? textController4;
   TextEditingController? textController5;
-  bool? checkboxListTileValue;
-  String? dropDownValue3;
+  TextEditingController? textController6;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -36,13 +32,14 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
     textController3 = TextEditingController();
     textController4 = TextEditingController();
     textController5 = TextEditingController();
+    textController6 = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'studentFormPage',
+        title: 'experimentForm',
         color: FlutterFlowTheme.of(context).primaryColor,
         child: Scaffold(
           key: scaffoldKey,
@@ -64,7 +61,7 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
               },
             ),
             title: Text(
-              'Student Form',
+              'Experiment Form',
               style: FlutterFlowTheme.of(context).title2.override(
                     fontFamily: FlutterFlowTheme.of(context).title2Family,
                     color: Colors.white,
@@ -101,60 +98,41 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'School',
+                                      'Name',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1,
                                     ),
-                                    StreamBuilder<List<SchoolDataRecord>>(
-                                      stream: querySchoolDataRecord(),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50,
-                                              height: 50,
-                                              child: CircularProgressIndicator(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryColor,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<SchoolDataRecord>
-                                            dropDownSchoolDataRecordList =
-                                            snapshot.data!;
-                                        return FlutterFlowDropDown(
-                                          options: dropDownSchoolDataRecordList
-                                              .map((e) => e.schoolName!)
-                                              .toList()
-                                              .toList(),
-                                          onChanged: (val) => setState(
-                                              () => dropDownValue1 = val),
-                                          width: double.infinity,
-                                          height: 50,
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1Family,
-                                                color: Colors.black,
-                                              ),
-                                          hintText: 'Please select...',
-                                          fillColor: Colors.white,
-                                          elevation: 2,
-                                          borderColor: Colors.transparent,
-                                          borderWidth: 0,
-                                          borderRadius: 0,
-                                          margin:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12, 4, 12, 4),
-                                          hidesUnderline: true,
-                                        );
-                                      },
+                                    TextFormField(
+                                      controller: textController1,
+                                      autofocus: true,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        hintText: 'Name',
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .bodyText2,
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0xFF909090),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0xFF909090),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1,
                                     ),
                                   ],
                                 ),
@@ -168,39 +146,7 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Name',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText1,
-                                  ),
-                                  TextFormField(
-                                    controller: textController1,
-                                    autofocus: true,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      hintText: 'First Name',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyText2,
-                                      enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFF909090),
-                                          width: 1,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFF909090),
-                                          width: 1,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                    ),
+                                    'Aim',
                                     style:
                                         FlutterFlowTheme.of(context).bodyText1,
                                   ),
@@ -209,7 +155,7 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: 'Last Name',
+                                      hintText: 'Aim',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodyText2,
                                       enabledBorder: UnderlineInputBorder(
@@ -240,7 +186,7 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-1, 0),
+                              alignment: AlignmentDirectional(0, 0),
                               child: Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
@@ -249,70 +195,41 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Class',
+                                      'Appartus',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1,
                                     ),
-                                    StreamBuilder<List<SchoolDataRecord>>(
-                                      stream: querySchoolDataRecord(),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50,
-                                              height: 50,
-                                              child: CircularProgressIndicator(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryColor,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<SchoolDataRecord>
-                                            dropDownSchoolDataRecordList =
-                                            snapshot.data!;
-                                        return FlutterFlowDropDown(
-                                          options: [
-                                            '12',
-                                            '11',
-                                            '10',
-                                            '9',
-                                            '8',
-                                            '7',
-                                            '6',
-                                            '5',
-                                            '4',
-                                            '3',
-                                            '2',
-                                            '1'
-                                          ],
-                                          onChanged: (val) => setState(
-                                              () => dropDownValue2 = val),
-                                          width: 180,
-                                          height: 50,
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1Family,
-                                                color: Colors.black,
-                                              ),
-                                          hintText: 'Please select...',
-                                          fillColor: Colors.white,
-                                          elevation: 2,
-                                          borderColor: Colors.transparent,
-                                          borderWidth: 0,
-                                          borderRadius: 0,
-                                          margin:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12, 4, 12, 4),
-                                          hidesUnderline: true,
-                                        );
-                                      },
+                                    TextFormField(
+                                      controller: textController3,
+                                      autofocus: true,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        hintText: 'Appartus',
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .bodyText2,
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0xFF909090),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0xFF909090),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1,
                                     ),
                                   ],
                                 ),
@@ -326,54 +243,7 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Email',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText1,
-                                  ),
-                                  TextFormField(
-                                    controller: textController3,
-                                    autofocus: true,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      hintText: 'Email',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyText2,
-                                      enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFF909090),
-                                          width: 1,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFF909090),
-                                          width: 1,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                    ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText1,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Whatsapp Contact',
+                                    'Procedure',
                                     style:
                                         FlutterFlowTheme.of(context).bodyText1,
                                   ),
@@ -382,7 +252,7 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: 'Whatsapp Contact',
+                                      hintText: 'Procedure',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodyText2,
                                       enabledBorder: UnderlineInputBorder(
@@ -408,6 +278,7 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyText1,
+                                    maxLines: 4,
                                   ),
                                 ],
                               ),
@@ -420,7 +291,7 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Aspiration',
+                                    'Observation',
                                     style:
                                         FlutterFlowTheme.of(context).bodyText1,
                                   ),
@@ -429,7 +300,7 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: 'Aspiration',
+                                      hintText: 'Observation',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodyText2,
                                       enabledBorder: UnderlineInputBorder(
@@ -455,29 +326,9 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyText1,
-                                    maxLines: 3,
+                                    maxLines: 4,
                                   ),
                                 ],
-                              ),
-                            ),
-                            Theme(
-                              data: ThemeData(
-                                unselectedWidgetColor: Color(0xFF95A1AC),
-                              ),
-                              child: CheckboxListTile(
-                                value: checkboxListTileValue ??= false,
-                                onChanged: (newValue) => setState(
-                                    () => checkboxListTileValue = newValue!),
-                                title: Text(
-                                  'Is Leader',
-                                  style: FlutterFlowTheme.of(context).bodyText1,
-                                ),
-                                tileColor: Color(0xFFF5F5F5),
-                                activeColor:
-                                    FlutterFlowTheme.of(context).primaryColor,
-                                dense: false,
-                                controlAffinity:
-                                    ListTileControlAffinity.trailing,
                               ),
                             ),
                             Padding(
@@ -488,59 +339,42 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Current Tinkering Activity',
+                                    'Result',
                                     style:
                                         FlutterFlowTheme.of(context).bodyText1,
                                   ),
-                                  StreamBuilder<List<ExperimentDataRecord>>(
-                                    stream: queryExperimentDataRecord(),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50,
-                                            height: 50,
-                                            child: CircularProgressIndicator(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryColor,
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      List<ExperimentDataRecord>
-                                          dropDownExperimentDataRecordList =
-                                          snapshot.data!;
-                                      return FlutterFlowDropDown(
-                                        options:
-                                            dropDownExperimentDataRecordList
-                                                .map((e) => e.experimentName!)
-                                                .toList()
-                                                .toList(),
-                                        onChanged: (val) => setState(
-                                            () => dropDownValue3 = val),
-                                        width: double.infinity,
-                                        height: 50,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1Family,
-                                              color: Colors.black,
-                                            ),
-                                        hintText: 'Please select...',
-                                        fillColor: Colors.white,
-                                        elevation: 2,
-                                        borderColor: Colors.transparent,
-                                        borderWidth: 0,
-                                        borderRadius: 0,
-                                        margin: EdgeInsetsDirectional.fromSTEB(
-                                            12, 4, 12, 4),
-                                        hidesUnderline: true,
-                                      );
-                                    },
+                                  TextFormField(
+                                    controller: textController6,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      hintText: 'Result',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .bodyText2,
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF909090),
+                                          width: 1,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF909090),
+                                          width: 1,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyText1,
+                                    maxLines: 4,
                                   ),
                                 ],
                               ),
@@ -555,33 +389,32 @@ class _StudentFormPageWidgetState extends State<StudentFormPageWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 5),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            final studentDataCreateData =
-                                createStudentDataRecordData(
-                              schoolName: dropDownValue1,
-                              firstName: textController1!.text,
-                              lastName: textController2!.text,
-                              studentClass: dropDownValue2,
-                              email: textController3!.text,
-                              whatsappContact: textController4!.text,
-                              aspiration: textController5!.text,
-                              teamLeader: checkboxListTileValue,
-                              currentTinkeringActivity: dropDownValue3,
-                            );
-                            await StudentDataRecord.collection
+                            final experimentDataCreateData = {
+                              ...createExperimentDataRecordData(
+                                experimentName: textController3!.text,
+                                aim: textController2!.text,
+                                procedure: textController4!.text,
+                                observation: textController5!.text,
+                                result: textController6!.text,
+                              ),
+                              'appartus': ['1'],
+                            };
+                            await ExperimentDataRecord.collection
                                 .doc()
-                                .set(studentDataCreateData);
+                                .set(experimentDataCreateData);
                             setState(() {
                               textController1?.clear();
                               textController2?.clear();
                               textController3?.clear();
-                              textController5?.clear();
                               textController4?.clear();
+                              textController5?.clear();
+                              textController6?.clear();
                             });
                             await showDialog(
                               context: context,
                               builder: (alertDialogContext) {
                                 return AlertDialog(
-                                  title: Text('School Added Successfully'),
+                                  title: Text('Experiment Added Successfully'),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>

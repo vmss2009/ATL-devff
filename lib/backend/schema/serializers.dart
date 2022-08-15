@@ -6,6 +6,7 @@ import 'school_data_record.dart';
 import 'student_data_record.dart';
 import 'team_data_record.dart';
 import 'young_mentor_data_record.dart';
+import 'experiment_data_record.dart';
 
 import 'index.dart';
 
@@ -22,6 +23,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   StudentDataRecord,
   TeamDataRecord,
   YoungMentorDataRecord,
+  ExperimentDataRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

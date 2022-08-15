@@ -82,7 +82,8 @@ class _$StudentDataRecordSerializer
       result
         ..add('currentTinkeringActivity')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.ffRef;
     if (value != null) {
@@ -141,7 +142,9 @@ class _$StudentDataRecordSerializer
           break;
         case 'currentTinkeringActivity':
           result.currentTinkeringActivity = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -174,7 +177,7 @@ class _$StudentDataRecord extends StudentDataRecord {
   @override
   final bool? teamLeader;
   @override
-  final String? currentTinkeringActivity;
+  final DocumentReference<Object?>? currentTinkeringActivity;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -295,9 +298,11 @@ class StudentDataRecordBuilder
   bool? get teamLeader => _$this._teamLeader;
   set teamLeader(bool? teamLeader) => _$this._teamLeader = teamLeader;
 
-  String? _currentTinkeringActivity;
-  String? get currentTinkeringActivity => _$this._currentTinkeringActivity;
-  set currentTinkeringActivity(String? currentTinkeringActivity) =>
+  DocumentReference<Object?>? _currentTinkeringActivity;
+  DocumentReference<Object?>? get currentTinkeringActivity =>
+      _$this._currentTinkeringActivity;
+  set currentTinkeringActivity(
+          DocumentReference<Object?>? currentTinkeringActivity) =>
       _$this._currentTinkeringActivity = currentTinkeringActivity;
 
   DocumentReference<Object?>? _ffRef;
