@@ -370,7 +370,7 @@ class _ExperimentFormWidgetState extends State<ExperimentFormWidget> {
                       onPressed: () async {
                         final experimentDataCreateData =
                             createExperimentDataRecordData(
-                          experimentName: textController3!.text,
+                          experimentName: textController1!.text,
                           aim: textController2!.text,
                           procedure: textController4!.text,
                           observation: textController5!.text,
