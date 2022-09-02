@@ -63,6 +63,13 @@ class _$AtlUsersRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.role;
+    if (value != null) {
+      result
+        ..add('role')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -110,6 +117,10 @@ class _$AtlUsersRecordSerializer
           result.phoneNumber = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'role':
+          result.role = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -137,6 +148,8 @@ class _$AtlUsersRecord extends AtlUsersRecord {
   @override
   final String? phoneNumber;
   @override
+  final String? role;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$AtlUsersRecord([void Function(AtlUsersRecordBuilder)? updates]) =>
@@ -149,6 +162,7 @@ class _$AtlUsersRecord extends AtlUsersRecord {
       this.uid,
       this.createdTime,
       this.phoneNumber,
+      this.role,
       this.ffRef})
       : super._();
 
@@ -170,6 +184,7 @@ class _$AtlUsersRecord extends AtlUsersRecord {
         uid == other.uid &&
         createdTime == other.createdTime &&
         phoneNumber == other.phoneNumber &&
+        role == other.role &&
         ffRef == other.ffRef;
   }
 
@@ -179,11 +194,13 @@ class _$AtlUsersRecord extends AtlUsersRecord {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, email.hashCode), displayName.hashCode),
-                        photoUrl.hashCode),
-                    uid.hashCode),
-                createdTime.hashCode),
-            phoneNumber.hashCode),
+                    $jc(
+                        $jc($jc($jc(0, email.hashCode), displayName.hashCode),
+                            photoUrl.hashCode),
+                        uid.hashCode),
+                    createdTime.hashCode),
+                phoneNumber.hashCode),
+            role.hashCode),
         ffRef.hashCode));
   }
 
@@ -196,6 +213,7 @@ class _$AtlUsersRecord extends AtlUsersRecord {
           ..add('uid', uid)
           ..add('createdTime', createdTime)
           ..add('phoneNumber', phoneNumber)
+          ..add('role', role)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -229,6 +247,10 @@ class AtlUsersRecordBuilder
   String? get phoneNumber => _$this._phoneNumber;
   set phoneNumber(String? phoneNumber) => _$this._phoneNumber = phoneNumber;
 
+  String? _role;
+  String? get role => _$this._role;
+  set role(String? role) => _$this._role = role;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -246,6 +268,7 @@ class AtlUsersRecordBuilder
       _uid = $v.uid;
       _createdTime = $v.createdTime;
       _phoneNumber = $v.phoneNumber;
+      _role = $v.role;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -275,6 +298,7 @@ class AtlUsersRecordBuilder
             uid: uid,
             createdTime: createdTime,
             phoneNumber: phoneNumber,
+            role: role,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

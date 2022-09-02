@@ -27,6 +27,8 @@ abstract class AtlUsersRecord
   @BuiltValueField(wireName: 'phone_number')
   String? get phoneNumber;
 
+  String? get role;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -36,7 +38,8 @@ abstract class AtlUsersRecord
     ..displayName = ''
     ..photoUrl = ''
     ..uid = ''
-    ..phoneNumber = '';
+    ..phoneNumber = ''
+    ..role = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('atlUsers');
@@ -66,6 +69,7 @@ Map<String, dynamic> createAtlUsersRecordData({
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
+  String? role,
 }) {
   final firestoreData = serializers.toFirestore(
     AtlUsersRecord.serializer,
@@ -76,7 +80,8 @@ Map<String, dynamic> createAtlUsersRecordData({
         ..photoUrl = photoUrl
         ..uid = uid
         ..createdTime = createdTime
-        ..phoneNumber = phoneNumber,
+        ..phoneNumber = phoneNumber
+        ..role = role,
     ),
   );
 

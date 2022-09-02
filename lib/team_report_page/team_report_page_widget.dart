@@ -28,245 +28,242 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Title(
-        title: 'teamReportPage',
-        color: FlutterFlowTheme.of(context).primaryColor,
-        child: Scaffold(
-          key: scaffoldKey,
-          appBar: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-            automaticallyImplyLeading: false,
-            leading: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 30,
-              borderWidth: 1,
-              buttonSize: 60,
-              icon: Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-                size: 30,
-              ),
-              onPressed: () async {
-                Navigator.pop(context);
-              },
-            ),
-            title: Text(
-              'Team Report',
-              style: FlutterFlowTheme.of(context).title2.override(
-                    fontFamily: FlutterFlowTheme.of(context).title2Family,
-                    color: Colors.white,
-                    fontSize: 22,
-                  ),
-            ),
-            actions: [],
-            centerTitle: false,
-            elevation: 2,
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+            size: 30,
           ),
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          body: SafeArea(
-            child: GestureDetector(
-              onTap: () => FocusScope.of(context).unfocus(),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  StreamBuilder<List<TeamDataRecord>>(
-                    stream: queryTeamDataRecord(),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: CircularProgressIndicator(
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                            ),
+          onPressed: () async {
+            Navigator.pop(context);
+          },
+        ),
+        title: Text(
+          'Team Report',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: FlutterFlowTheme.of(context).title2Family,
+                color: Colors.white,
+                fontSize: 22,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+      ),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                StreamBuilder<List<TeamDataRecord>>(
+                  stream: queryTeamDataRecord(),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: CircularProgressIndicator(
+                            color: FlutterFlowTheme.of(context).primaryColor,
                           ),
-                        );
-                      }
-                      List<TeamDataRecord> listViewTeamDataRecordList =
-                          snapshot.data!;
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: listViewTeamDataRecordList.length,
-                        itemBuilder: (context, listViewIndex) {
-                          final listViewTeamDataRecord =
-                              listViewTeamDataRecordList[listViewIndex];
-                          return Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
-                            child: InkWell(
-                              onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        MoreInformationTeamWidget(
-                                      teamName: listViewTeamDataRecord.teamName,
-                                      teamLeader:
-                                          listViewTeamDataRecord.teamLeader,
-                                      currentExperiment:
-                                          listViewTeamDataRecord.experiment,
-                                      teamMembers: functions
-                                          .returnTeamMembersInStringFormat(
-                                              listViewTeamDataRecord.teamMember!
-                                                  .toList()),
-                                    ),
+                        ),
+                      );
+                    }
+                    List<TeamDataRecord> listViewTeamDataRecordList =
+                        snapshot.data!;
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: listViewTeamDataRecordList.length,
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewTeamDataRecord =
+                            listViewTeamDataRecordList[listViewIndex];
+                        return Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
+                          child: InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      MoreInformationTeamWidget(
+                                    teamName: listViewTeamDataRecord.teamName,
+                                    teamLeader:
+                                        listViewTeamDataRecord.teamLeader,
+                                    currentExperiment:
+                                        listViewTeamDataRecord.experiment,
+                                    teamMembers: functions
+                                        .returnTeamMembersInStringFormat(
+                                            listViewTeamDataRecord.teamMember!
+                                                .toList()),
                                   ),
-                                );
-                              },
-                              child: Container(
-                                width: 100,
-                                height: 125,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
                                 ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        AutoSizeText(
-                                          listViewTeamDataRecord.teamName!
-                                              .maybeHandleOverflow(
-                                            maxChars: 10,
-                                            replacement: '…',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .title1,
+                              );
+                            },
+                            child: Container(
+                              width: 100,
+                              height: 125,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      AutoSizeText(
+                                        listViewTeamDataRecord.teamName!
+                                            .maybeHandleOverflow(
+                                          maxChars: 10,
+                                          replacement: '…',
                                         ),
-                                        Align(
-                                          alignment: AlignmentDirectional(0, 0),
-                                          child: FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 30,
-                                            borderWidth: 1,
-                                            buttonSize: 60,
-                                            icon: Icon(
-                                              Icons.edit,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 30,
-                                            ),
-                                            onPressed: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      TeamformEditPageWidget(
-                                                    teamName:
-                                                        listViewTeamDataRecord
-                                                            .teamName,
-                                                    teamLeader:
-                                                        listViewTeamDataRecord
-                                                            .teamLeader,
-                                                    currentExperiment:
-                                                        listViewTeamDataRecord
-                                                            .experiment,
-                                                    documentRefrence:
-                                                        listViewTeamDataRecord
-                                                            .reference,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                        FlutterFlowIconButton(
+                                        style:
+                                            FlutterFlowTheme.of(context).title1,
+                                      ),
+                                      Align(
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
                                           borderRadius: 30,
                                           borderWidth: 1,
                                           buttonSize: 60,
                                           icon: Icon(
-                                            Icons.delete,
+                                            Icons.edit,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             size: 30,
                                           ),
                                           onPressed: () async {
-                                            var confirmDialogResponse =
-                                                await showDialog<bool>(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              'Do you want to delete ?'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      false),
-                                                              child: Text(
-                                                                  'Cancel'),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      true),
-                                                              child: Text(
-                                                                  'Confirm'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    ) ??
-                                                    false;
-                                            if (confirmDialogResponse) {
-                                              await listViewTeamDataRecord
-                                                  .reference
-                                                  .delete();
-                                            }
+                                            await Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    TeamformEditPageWidget(
+                                                  teamName:
+                                                      listViewTeamDataRecord
+                                                          .teamName,
+                                                  teamLeader:
+                                                      listViewTeamDataRecord
+                                                          .teamLeader,
+                                                  currentExperiment:
+                                                      listViewTeamDataRecord
+                                                          .experiment,
+                                                  documentRefrence:
+                                                      listViewTeamDataRecord
+                                                          .reference,
+                                                ),
+                                              ),
+                                            );
                                           },
                                         ),
-                                      ],
-                                    ),
-                                    Text(
-                                      'Current Tinkering Activity : ${listViewTeamDataRecord.experiment}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .title3
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .title3Family,
-                                            fontSize: 15,
-                                          ),
-                                    ),
-                                    Text(
-                                      'Leader : ${listViewTeamDataRecord.teamLeader}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .title3
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .title3Family,
-                                            fontSize: 15,
-                                          ),
-                                    ),
-                                  ],
-                                ),
+                                      ),
+                                      FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 30,
+                                        borderWidth: 1,
+                                        buttonSize: 60,
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 30,
+                                        ),
+                                        onPressed: () async {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Do you want to delete ?'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child:
+                                                                Text('Confirm'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            await listViewTeamDataRecord
+                                                .reference
+                                                .delete();
+                                          }
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    'Current Tinkering Activity : ${listViewTeamDataRecord.experiment}',
+                                    style: FlutterFlowTheme.of(context)
+                                        .title3
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .title3Family,
+                                          fontSize: 15,
+                                        ),
+                                  ),
+                                  Text(
+                                    'Leader : ${listViewTeamDataRecord.teamLeader}',
+                                    style: FlutterFlowTheme.of(context)
+                                        .title3
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .title3Family,
+                                          fontSize: 15,
+                                        ),
+                                  ),
+                                ],
                               ),
                             ),
-                          );
-                        },
-                      );
-                    },
-                  ),
-                ],
-              ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

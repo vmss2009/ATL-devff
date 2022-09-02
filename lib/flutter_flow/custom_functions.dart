@@ -15,5 +15,11 @@ String convertbooltostring(bool? text) {
 }
 
 String returnTeamMembersInStringFormat(List<String> teamMembers) {
-  return teamMembers.join(", ");
+  return teamMembers.join(",");
+}
+
+DocumentReference returnDocumentRefrence(
+    List<DocumentReference> documentRefrenceList) {
+  return documentRefrenceList[
+      math.Random().nextInt(documentRefrenceList.length)];
 }
