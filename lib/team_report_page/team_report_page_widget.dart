@@ -96,7 +96,9 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
                           padding:
                               EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
                           child: InkWell(
+
                             onTap: () async {
+
                               await Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -114,6 +116,7 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
                                   ),
                                 ),
                               );
+
                             },
                             child: Container(
                               width: 100,
@@ -168,6 +171,10 @@ class _TeamReportPageWidgetState extends State<TeamReportPageWidget> {
                                                   currentExperiment:
                                                       listViewTeamDataRecord
                                                           .experiment,
+                                                  teamMembers: functions
+                                                      .returnTeamMembersInStringFormat(
+                                                      listViewTeamDataRecord.teamMember!
+                                                          .toList()),
                                                   documentRefrence:
                                                       listViewTeamDataRecord
                                                           .reference,
